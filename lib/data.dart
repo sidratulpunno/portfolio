@@ -112,15 +112,24 @@ class ResumeData {
   ];
 
   static const certifications = [
-    ('Learn C++ Programming', 'UC-780d24b1-eedd-4870-a91e-a4a74f4f6e9f'),
+    ('Learn C++ Programming Beginner to Advance Deep Dive in C++', 'UC-780d24b1-eedd-4870-a91e-a4a74f4f6e9f'),
     ('Machine Learning A-Z', 'UC-c6847dd9-c135-4118-a95c-620c3b6bb3c2'),
+    ('Learn Ethical Hacking From Scratch', 'UC-a247b4da-dede-4368-ab73-4ad280ee5ef7'),
     ('Flutter & Dart - The Complete Guide', 'UC-d38b33f6-9674-40b2-a319-cd64643928b5'),
-    ('DevOps Beginners to Advanced', 'UC-0dafc0e6-892b-4117-a750-badce1091708'),
-    ('Learn JAVA Programming', 'UC-c2d008d1-2cfd-4723-b0e4-c0ae0630ca43'),
+    ('DevOps Beginners to Advanced with Projects', 'UC-0dafc0e6-892b-4117-a750-badce1091708'),
+    ('Learn JAVA Programming Beginner to Master', 'UC-c2d008d1-2cfd-4723-b0e4-c0ae0630ca43'),
     ('PCB Design: From Idea to Product', 'UC-9df4d3f1-2eeb-4245-a158-8884d6ff4f73'),
     ('Learn Ethical Hacking From Scratch', 'UC-a247b4da-dede-4368-ab73-4ad280ee5ef7'),
     ('Go - The Complete Guide', 'UC-560066ed-eb42-4323-b4c6-0dc4f42e23f3'),
     ('Flutter BLoC - Zero to Hero', 'UC-d6cc5e44-2608-4cc7-9596-81d6c3d91305'),
+    ('Learning Complete PCB Design: From an Idea to a Product', 'UC-9df4d3f1-2eeb-4245-a158-8884d6ff4f73'),
+    ('DevOps, CI/CD(Continuous Integration/DeIivery) for Beginners', 'UC-5a2f1bbf-d4d8-4b75-a1d2-6b4d79ba800e'),
+    ('How to Set Up an Electronics Lab: Tools & Equipments', 'UC-0f1e3b5a-f474-48b2-8d9c-35c0511820dd'),
+
+  ];
+  static const badges = [
+    ('Building AI-Powered Search with MongoDB Vector Search', 'https://www.credly.com/badges/c7dc30b0-da8a-4a72-a75b-f43fabb6c4e5','https://images.credly.com/images/730e9c82-7869-4288-b580-9f8500a94465/blob'),
+    ('Building RAG Apps Using MongoDB', 'https://www.credly.com/badges/70617833-ec67-4564-bd8b-786a4c6ad97c','https://images.credly.com/images/2aff887d-ee1e-479f-b26f-dcb20d647bd6/blob'),
   ];
 
   static const honors = [
