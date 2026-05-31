@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'safe_image.dart';
 import 'theme.dart';
 import 'data.dart';
 
@@ -533,6 +534,231 @@ class _ProjectFlipCardState extends State<ProjectFlipCard>
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class TiltWidget extends StatefulWidget {
+  final Widget child;
+  final double maxTilt;
+  final double perspective;
+
+  const TiltWidget({
+    super.key,
+    required this.child,
+    this.maxTilt = 10,
+    this.perspective = 0.001,
+  });
+
+  @override
+  State<TiltWidget> createState() => _TiltWidgetState();
+}
+
+class _TiltWidgetState extends State<TiltWidget>
+    with SingleTickerProviderStateMixin {
+  double _tiltX = 0;
+  double _tiltY = 0;
+  bool _idle = true;
+  late final AnimationController _idleAnim;
+
+  @override
+  void initState() {
+    super.initState();
+    _idleAnim = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 6),
+    )..repeat(reverse: true);
+  }
+
+  @override
+  void dispose() {
+    _idleAnim.dispose();
+    super.dispose();
+  }
+
+  void _onHover(PointerEvent e) {
+    final box = context.findRenderObject() as RenderBox;
+    final size = box.size;
+    final local = box.globalToLocal(e.position);
+    setState(() {
+      _idle = false;
+      _tiltX = ((local.dy - size.height / 2) / (size.height / 2)) * widget.maxTilt;
+      _tiltY = ((local.dx - size.width / 2) / (size.width / 2)) * widget.maxTilt;
+    });
+  }
+
+  void _onExit(PointerEvent _) {
+    setState(() {
+      _idle = true;
+      _tiltX = 0;
+      _tiltY = 0;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onHover: _onHover,
+      onExit: _onExit,
+      child: AnimatedBuilder(
+        animation: _idleAnim,
+        builder: (context, _) {
+          final breath = _idle
+              ? math.sin(_idleAnim.value * 2 * math.pi) * 0.5
+              : 0.0;
+          final rx = (_tiltX + breath) * math.pi / 180;
+          final ry = _tiltY * math.pi / 180;
+          return Transform(
+            transform: Matrix4.identity()
+              ..setEntry(3, 2, widget.perspective)
+              ..rotateX(rx)
+              ..rotateY(ry),
+            alignment: Alignment.center,
+            child: widget.child,
+          );
+        },
+      ),
+    );
+  }
+}
+
+class CredentialCard extends StatefulWidget {
+  final String title;
+  final String imageUrl;
+  final String verifyUrl;
+  final String verifyLabel;
+
+  const CredentialCard({
+    super.key,
+    required this.title,
+    required this.imageUrl,
+    required this.verifyUrl,
+    this.verifyLabel = 'Verify',
+  });
+
+  @override
+  State<CredentialCard> createState() => _CredentialCardState();
+}
+
+class _CredentialCardState extends State<CredentialCard> {
+  bool _hover = false;
+
+  void _launch(String url) => launchUrl(Uri.parse(url));
+
+  @override
+  Widget build(BuildContext context) {
+    return TiltWidget(
+      maxTilt: 6,
+      child: MouseRegion(
+        onEnter: (_) => setState(() => _hover = true),
+        onExit: (_) => setState(() => _hover = false),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 300),
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: AppTheme.of(context).cardBackground,
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(
+              color: _hover
+                  ? AppTheme.accent.withValues(alpha: 0.4)
+                  : AppTheme.of(context).border.withValues(alpha: 0.4),
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: _hover
+                    ? AppTheme.accent.withValues(alpha: 0.12)
+                    : Colors.black.withValues(alpha: 0.15),
+                blurRadius: _hover ? 24 : 12,
+                offset: Offset(0, _hover ? 10 : 6),
+              ),
+            ],
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                widget.title,
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500,
+                  color: AppTheme.of(context).textPrimary,
+                  height: 1.3,
+                ),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+              const SizedBox(height: 10),
+              Expanded(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: SafeImage(
+                    src: widget.imageUrl,
+                    fit: BoxFit.contain,
+                    width: double.infinity,
+                    height: double.infinity,
+                    loadingBuilder: (context, child, progress) {
+                      if (progress == null) return child;
+                      return Container(
+                        color: AppTheme.of(context).surface,
+                      );
+                    },
+                    errorBuilder: (context, error, stackTrace) {
+                      return Container(
+                        color: AppTheme.of(context).surface,
+                        child: Center(
+                          child: Icon(
+                            Icons.image_not_supported_outlined,
+                            color: AppTheme.of(context).textSecondary,
+                            size: 28,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              GestureDetector(
+                onTap: () => _launch(widget.verifyUrl),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 7,
+                  ),
+                  decoration: BoxDecoration(
+                    color: _hover
+                        ? AppTheme.accent.withValues(alpha: 0.15)
+                        : Colors.transparent,
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(
+                      color: AppTheme.accent.withValues(alpha: 0.5),
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Icons.verified,
+                        size: 13,
+                        color: AppTheme.accent,
+                      ),
+                      const SizedBox(width: 5),
+                      Text(
+                        widget.verifyLabel,
+                        style: TextStyle(
+                          fontSize: 11,
+                          color: AppTheme.accent,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

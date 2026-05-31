@@ -19,6 +19,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
   final _scrollController = ScrollController();
   final _sectionKeys = <String, GlobalKey>{
     'about': GlobalKey(),
@@ -26,9 +27,11 @@ class _HomePageState extends State<HomePage> {
     'publications': GlobalKey(),
     'projects': GlobalKey(),
     'achievements': GlobalKey(),
+    'certifications': GlobalKey(),
     'contact': GlobalKey(),
   };
   String _activeSection = 'about';
+  static const _resumeUrl = 'https://drive.google.com/file/d/1nR40C2p7q3Zfxd9ihVOl7iD_vItlwAI3/view';
 
   @override
   void initState() {
@@ -59,6 +62,10 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _scrollTo(String section) {
+    if (section == 'resume') {
+      _launch(_resumeUrl);
+      return;
+    }
     final key = _sectionKeys[section];
     if (key?.currentContext == null) return;
     Scrollable.ensureVisible(
@@ -73,7 +80,10 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final isMobile = MediaQuery.of(context).size.width < 768;
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: isMobile ? _buildDrawer(context) : null,
       body: Stack(
         children: [
           SingleChildScrollView(
@@ -176,6 +186,7 @@ class _HomePageState extends State<HomePage> {
             onTap: _scrollTo,
             onToggleTheme: widget.onToggleTheme,
             isDarkMode: widget.isDarkMode,
+            isMobile: isMobile,
           ),
         ],
       ),
@@ -338,6 +349,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildAchievements(BuildContext context) {
+    final cols = AppTheme.crossAxisCount(context);
     return AnimatedSection(
       delayMs: 600,
       child: Column(
@@ -375,32 +387,59 @@ class _HomePageState extends State<HomePage> {
               )),
           const SizedBox(height: 48),
           Text('Certifications',
+              key: _sectionKeys['certifications'],
               style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                   color: AppTheme.of(context).textPrimary)),
           const SizedBox(height: 16),
-          ...ResumeData.certifications.map((c) => Padding(
-                padding: const EdgeInsets.only(bottom: 12),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Icon(Icons.check_circle_outline,
-                        size: 16, color: AppTheme.accent),
-                    const SizedBox(width: 12),
-                    GestureDetector(
-                      onTap: () =>
-                          _launch('https://ude.my/${c.$2}'),
-                      child: Text(c.$1,
-                          style: TextStyle(
-                              fontSize: 14,
-                              color: AppTheme.of(context).textSecondary,
-                              decoration: TextDecoration.underline,
-                              decorationColor: AppTheme.of(context).border)),
-                    ),
-                  ],
-                ),
-              )),
+          GridView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: cols,
+              crossAxisSpacing: 16,
+              mainAxisSpacing: 16,
+              mainAxisExtent: 280,
+            ),
+            itemCount: ResumeData.certifications.length,
+            itemBuilder: (_, i) {
+              final c = ResumeData.certifications[i];
+              return CredentialCard(
+                title: c.$1,
+                imageUrl: c.$3,
+                verifyUrl: 'https://ude.my/${c.$2}',
+                verifyLabel: 'Verify Certificate',
+              );
+            },
+          ),
+          const SizedBox(height: 48),
+          Text('Badges',
+              style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: AppTheme.of(context).textPrimary)),
+          const SizedBox(height: 16),
+          GridView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: cols == 1 ? 1 : 2,
+              crossAxisSpacing: 16,
+              mainAxisSpacing: 16,
+              mainAxisExtent: 280,
+            ),
+            itemCount: ResumeData.badges.length,
+            itemBuilder: (_, i) {
+              final b = ResumeData.badges[i];
+              return CredentialCard(
+                title: b.$1,
+                imageUrl: b.$3,
+                verifyUrl: b.$2,
+                verifyLabel: 'Verify Badge',
+              );
+            },
+          ),
         ],
       ),
     );
@@ -442,6 +481,51 @@ class _HomePageState extends State<HomePage> {
       ],
     );
   }
+
+  Widget _buildDrawer(BuildContext context) {
+    final items = ['about', 'skills', 'publications', 'projects', 'achievements', 'certifications', 'contact', 'resume'];
+    return Drawer(
+      child: Container(
+        color: AppTheme.of(context).background,
+        child: ListView(
+          padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top + 20),
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+              child: Text(
+                'SP',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w700,
+                  color: AppTheme.of(context).textPrimary,
+                ),
+              ),
+            ),
+            Divider(color: AppTheme.of(context).border),
+            ...items.map((item) => ListTile(
+              leading: Icon(
+                item == 'resume' ? Icons.description : Icons.circle,
+                size: item == 'resume' ? 20 : 8,
+                color: AppTheme.accent,
+              ),
+              title: Text(
+                item[0].toUpperCase() + item.substring(1),
+                style: TextStyle(
+                  color: AppTheme.of(context).textPrimary,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 15,
+                ),
+              ),
+              onTap: () {
+                _scrollTo(item);
+                _scaffoldKey.currentState?.closeDrawer();
+              },
+            )),
+          ],
+        ),
+      ),
+    );
+  }
 }
 
 class _NavBar extends StatelessWidget {
@@ -449,17 +533,19 @@ class _NavBar extends StatelessWidget {
   final void Function(String) onTap;
   final VoidCallback onToggleTheme;
   final bool isDarkMode;
+  final bool isMobile;
 
   const _NavBar({
     required this.activeSection,
     required this.onTap,
     required this.onToggleTheme,
     required this.isDarkMode,
+    required this.isMobile,
   });
 
   @override
   Widget build(BuildContext context) {
-    final items = ['about', 'skills', 'publications', 'projects', 'achievements', 'contact'];
+    final items = ['about', 'skills', 'publications', 'projects', 'achievements', 'certifications', 'contact', 'resume'];
     return Positioned(
       top: 0,
       left: 0,
@@ -496,17 +582,36 @@ class _NavBar extends StatelessWidget {
                   ),
                   const SizedBox(width: 24),
                   Expanded(
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: items.map((item) => _NavItem(
-                          label: item[0].toUpperCase() + item.substring(1),
-                          isActive: activeSection == item,
-                          onTap: () => onTap(item),
-                        )).toList(),
+                    child: isMobile
+                        ? const SizedBox()
+                        : SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              children: items.map((item) => _NavItem(
+                                label: item[0].toUpperCase() + item.substring(1),
+                                isActive: activeSection == item && item != 'resume',
+                                onTap: () => onTap(item),
+                              )).toList(),
+                            ),
+                          ),
+                  ),
+                  if (isMobile)
+                    GestureDetector(
+                      onTap: () => Scaffold.of(context).openDrawer(),
+                      child: Container(
+                        padding: const EdgeInsets.all(8),
+                        margin: const EdgeInsets.only(right: 4),
+                        decoration: BoxDecoration(
+                          color: AppTheme.of(context).surfaceLight.withValues(alpha: 0.3),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Icon(
+                          Icons.menu_rounded,
+                          size: 20,
+                          color: AppTheme.of(context).textSecondary,
+                        ),
                       ),
                     ),
-                  ),
                   IconButton(
                     icon: Icon(
                       isDarkMode ? Icons.light_mode : Icons.dark_mode,
