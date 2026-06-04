@@ -20,32 +20,8 @@ class PortfolioApp extends StatefulWidget {
   State<PortfolioApp> createState() => _PortfolioAppState();
 }
 
-class _PortfolioAppState extends State<PortfolioApp> with WidgetsBindingObserver {
-  ThemeMode _themeMode = ThemeMode.dark;
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addObserver(this);
-    _themeMode = WidgetsBinding.instance.platformDispatcher.platformBrightness == Brightness.dark
-        ? ThemeMode.dark
-        : ThemeMode.light;
-  }
-
-  @override
-  void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
-    super.dispose();
-  }
-
-  @override
-  void didChangePlatformBrightness() {
-    setState(() {
-      _themeMode = WidgetsBinding.instance.platformDispatcher.platformBrightness == Brightness.dark
-          ? ThemeMode.dark
-          : ThemeMode.light;
-    });
-  }
+class _PortfolioAppState extends State<PortfolioApp> {
+  ThemeMode _themeMode = ThemeMode.light;
 
   void _toggleTheme() {
     setState(() {
