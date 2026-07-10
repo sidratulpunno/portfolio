@@ -406,9 +406,9 @@ class _HomePageState extends State<HomePage> {
             itemBuilder: (_, i) {
               final c = ResumeData.certifications[i];
               return CredentialCard(
-                title: c.$1,
-                imageUrl: c.$3,
-                verifyUrl: 'https://ude.my/${c.$2}',
+                title: c.title,
+                imageUrl: c.imageUrl,
+                verifyUrl: c.verifyUrl,
                 verifyLabel: 'Verify Certificate',
               );
             },

@@ -20,6 +20,13 @@ class Project {
   const Project(this.title, this.tech, this.points);
 }
 
+class Certification {
+  final String title;
+  final String verifyUrl;
+  final String imageUrl;
+  const Certification(this.title, this.verifyUrl, this.imageUrl);
+}
+
 class ResumeData {
   ResumeData._();
 
@@ -112,19 +119,20 @@ class ResumeData {
   ];
 
   static const certifications = [
-    ('Learn C++ Programming Beginner to Advance Deep Dive in C++', 'UC-780d24b1-eedd-4870-a91e-a4a74f4f6e9f','https://udemy-certificate.s3.amazonaws.com/image/UC-780d24b1-eedd-4870-a91e-a4a74f4f6e9f.jpg'),
-    ('Machine Learning A-Z', 'UC-c6847dd9-c135-4118-a95c-620c3b6bb3c2','https://udemy-certificate.s3.amazonaws.com/image/UC-c6847dd9-c135-4118-a95c-620c3b6bb3c2.jpg'),
-    ('Learn Ethical Hacking From Scratch', 'UC-a247b4da-dede-4368-ab73-4ad280ee5ef7','https://udemy-certificate.s3.amazonaws.com/image/UC-a247b4da-dede-4368-ab73-4ad280ee5ef7.jpg'),
-    ('Flutter & Dart - The Complete Guide', 'UC-d38b33f6-9674-40b2-a319-cd64643928b5','https://udemy-certificate.s3.amazonaws.com/image/UC-d38b33f6-9674-40b2-a319-cd64643928b5.jpg'),
-    ('DevOps Beginners to Advanced with Projects', 'UC-0dafc0e6-892b-4117-a750-badce1091708','https://udemy-certificate.s3.amazonaws.com/image/UC-0dafc0e6-892b-4117-a750-badce1091708.jpg'),
-    ('Learn JAVA Programming Beginner to Master', 'UC-c2d008d1-2cfd-4723-b0e4-c0ae0630ca43','https://udemy-certificate.s3.amazonaws.com/image/UC-c2d008d1-2cfd-4723-b0e4-c0ae0630ca43.jpg'),
-    ('PCB Design: From Idea to Product', 'UC-9df4d3f1-2eeb-4245-a158-8884d6ff4f73','https://udemy-certificate.s3.amazonaws.com/image/UC-9df4d3f1-2eeb-4245-a158-8884d6ff4f73.jpg'),
-    ('Go - The Complete Guide', 'UC-560066ed-eb42-4323-b4c6-0dc4f42e23f3','https://udemy-certificate.s3.amazonaws.com/image/UC-560066ed-eb42-4323-b4c6-0dc4f42e23f3.jpg'),
-    ('Flutter BLoC - Zero to Hero', 'UC-d6cc5e44-2608-4cc7-9596-81d6c3d91305','https://udemy-certificate.s3.amazonaws.com/image/UC-d6cc5e44-2608-4cc7-9596-81d6c3d91305.jpg'),
-    ('Learning Complete PCB Design: From an Idea to a Product', 'UC-9df4d3f1-2eeb-4245-a158-8884d6ff4f73','https://udemy-certificate.s3.amazonaws.com/image/UC-9df4d3f1-2eeb-4245-a158-8884d6ff4f73.jpg'),
-    ('DevOps, CI/CD(Continuous Integration/DeIivery) for Beginners', 'UC-5a2f1bbf-d4d8-4b75-a1d2-6b4d79ba800e','https://udemy-certificate.s3.amazonaws.com/image/UC-5a2f1bbf-d4d8-4b75-a1d2-6b4d79ba800e.jpg'),
-    ('How to Set Up an Electronics Lab: Tools & Equipments', 'UC-0f1e3b5a-f474-48b2-8d9c-35c0511820dd','https://udemy-certificate.s3.amazonaws.com/image/UC-0f1e3b5a-f474-48b2-8d9c-35c0511820dd.jpg'),
-
+    Certification('Learn C++ Programming Beginner to Advance Deep Dive in C++', 'https://ude.my/UC-780d24b1-eedd-4870-a91e-a4a74f4f6e9f', 'https://udemy-certificate.s3.amazonaws.com/image/UC-780d24b1-eedd-4870-a91e-a4a74f4f6e9f.jpg'),
+    Certification('Machine Learning A-Z', 'https://ude.my/UC-c6847dd9-c135-4118-a95c-620c3b6bb3c2', 'https://udemy-certificate.s3.amazonaws.com/image/UC-c6847dd9-c135-4118-a95c-620c3b6bb3c2.jpg'),
+    Certification('Learn Ethical Hacking From Scratch', 'https://ude.my/UC-a247b4da-dede-4368-ab73-4ad280ee5ef7', 'https://udemy-certificate.s3.amazonaws.com/image/UC-a247b4da-dede-4368-ab73-4ad280ee5ef7.jpg'),
+    Certification('Flutter & Dart - The Complete Guide', 'https://ude.my/UC-d38b33f6-9674-40b2-a319-cd64643928b5', 'https://udemy-certificate.s3.amazonaws.com/image/UC-d38b33f6-9674-40b2-a319-cd64643928b5.jpg'),
+    Certification('DevOps Beginners to Advanced with Projects', 'https://ude.my/UC-0dafc0e6-892b-4117-a750-badce1091708', 'https://udemy-certificate.s3.amazonaws.com/image/UC-0dafc0e6-892b-4117-a750-badce1091708.jpg'),
+    Certification('Learn JAVA Programming Beginner to Master', 'https://ude.my/UC-c2d008d1-2cfd-4723-b0e4-c0ae0630ca43', 'https://udemy-certificate.s3.amazonaws.com/image/UC-c2d008d1-2cfd-4723-b0e4-c0ae0630ca43.jpg'),
+    Certification('PCB Design: From Idea to Product', 'https://ude.my/UC-9df4d3f1-2eeb-4245-a158-8884d6ff4f73', 'https://udemy-certificate.s3.amazonaws.com/image/UC-9df4d3f1-2eeb-4245-a158-8884d6ff4f73.jpg'),
+    Certification('Go - The Complete Guide', 'https://ude.my/UC-560066ed-eb42-4323-b4c6-0dc4f42e23f3', 'https://udemy-certificate.s3.amazonaws.com/image/UC-560066ed-eb42-4323-b4c6-0dc4f42e23f3.jpg'),
+    Certification('Flutter BLoC - Zero to Hero', 'https://ude.my/UC-d6cc5e44-2608-4cc7-9596-81d6c3d91305', 'https://udemy-certificate.s3.amazonaws.com/image/UC-d6cc5e44-2608-4cc7-9596-81d6c3d91305.jpg'),
+    Certification('Learning Complete PCB Design: From an Idea to a Product', 'https://ude.my/UC-9df4d3f1-2eeb-4245-a158-8884d6ff4f73', 'https://udemy-certificate.s3.amazonaws.com/image/UC-9df4d3f1-2eeb-4245-a158-8884d6ff4f73.jpg'),
+    Certification('DevOps, CI/CD(Continuous Integration/DeIivery) for Beginners', 'https://ude.my/UC-5a2f1bbf-d4d8-4b75-a1d2-6b4d79ba800e', 'https://udemy-certificate.s3.amazonaws.com/image/UC-5a2f1bbf-d4d8-4b75-a1d2-6b4d79ba800e.jpg'),
+    Certification('How to Set Up an Electronics Lab: Tools & Equipments', 'https://ude.my/UC-0f1e3b5a-f474-48b2-8d9c-35c0511820dd', 'https://udemy-certificate.s3.amazonaws.com/image/UC-0f1e3b5a-f474-48b2-8d9c-35c0511820dd.jpg'),
+    Certification('AI Fluency: Framework & Foundations', 'https://verify.skilljar.com/c/m3t6rum2y2px', 'https://cc.sj-cdn.net/certificate/17owe4fx9adox/certificate-m3t6rum2y2px-1781688207.jpg?Expires=1783685016&Signature=Tk~JPFIi81SFj4Xicxm7YtWxzPT6gb95QAmwbhgW1O8v~ddhEevJ4bQKoy46lcUu3UOngJnWhhDs~VsMZBE6jngQAfthtx4DqyiwIi~SHYoyg5slK18UA1i4BozNoV2zUfJOlIKTcuKLW664AzKmL8ROugde7S4yynmfWhzFzDflDgUnNYP~SnaBIGb4T22KPkTtuYMKCMzYbyOPi8LP8U9D-Gv-pAnsh8aCSDZ740k9TPdhTeyeT0q4WEkMH517fRSavzGhY90P0QzV9-U5mWwlP0bGAQ9Jum7pijE-smWis9h004-5~c2izyziVE4y6C1vAMUTnjMGxYpVIvg4Qw__&Key-Pair-Id=APKAI3B7HFD2VYJQK4MQ'),
+    Certification('Claude 101', 'https://verify.skilljar.com/c/wfmycoovhkd6', 'https://cc.sj-cdn.net/certificate/22npsux5ldfq0/certificate-wfmycoovhkd6-1781687868.jpg?Expires=1783685013&Signature=nbByVOlbwYTpPMjGLO6DHg8XPN64glvTtGQu4csp4To~fA7xHm~LVfsIONECSMuC7UGidXGCZVcLJ35SfRSVOmMztDzWhGB6Wpq3pG8KFKx2Rt04qK6RZNoKk1EzS6M6qRZPk7feeS0CtQ5hmJmqWW3D6Y2Y8AdYv33WS52zhDKtQACw-FpQBCCajfhloCX-rj2k4r0BrpK7Ox3NXLyHXVzqv0iqqN649JMxXeQr6POSr6lYwRlYsujamIn0IL1ZbaKhArFuS1D4GdxSD9LX-MZa6ZesdEerDkDSEfB2jOUUxeO5Hpc4NCeWSwP9xOlrK0tEbSCfVzbq1WWdfksczA__&Key-Pair-Id=APKAI3B7HFD2VYJQK4MQ'),
   ];
   static const badges = [
     ('Building AI-Powered Search with MongoDB Vector Search', 'https://www.credly.com/badges/c7dc30b0-da8a-4a72-a75b-f43fabb6c4e5','https://images.credly.com/images/730e9c82-7869-4288-b580-9f8500a94465/blob'),
