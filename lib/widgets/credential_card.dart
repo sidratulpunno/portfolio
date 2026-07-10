@@ -67,15 +67,30 @@ class _CredentialCardState extends State<CredentialCard> {
                 Expanded(
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
-                    child: Container(
+                    child: Image.network(
+                      widget.imageUrl,
+                      fit: BoxFit.contain,
                       width: double.infinity,
                       height: double.infinity,
-                      color: dark ? PortfolioColors.cardDark : PortfolioColors.borderLight,
-                      child: Center(
-                        child: Icon(
-                          Icons.image_outlined,
-                          color: PortfolioColors.textTertiaryDark.withValues(alpha: 0.5),
-                          size: 32,
+                      loadingBuilder: (_, child, progress) {
+                        if (progress == null) return child;
+                        return Container(
+                          color: dark ? PortfolioColors.cardDark : PortfolioColors.borderLight,
+                          child: Center(
+                            child: SizedBox(
+                              width: 20, height: 20,
+                              child: CircularProgressIndicator(
+                                strokeWidth: 2,
+                                color: PortfolioColors.accent.withValues(alpha: 0.5),
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                      errorBuilder: (_, _, _) => Container(
+                        color: dark ? PortfolioColors.cardDark : PortfolioColors.borderLight,
+                        child: Center(
+                          child: Icon(Icons.image_outlined, color: PortfolioColors.textTertiaryDark.withValues(alpha: 0.5), size: 28),
                         ),
                       ),
                     ),

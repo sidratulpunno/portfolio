@@ -204,13 +204,16 @@ class AboutSection extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(10),
         ),
-        child: const Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(Icons.download, size: 16, color: Colors.white),
-            SizedBox(width: 8),
-            Text('Download Resume', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 14)),
-          ],
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.download, size: 16, color: Colors.white),
+              const SizedBox(width: 8),
+              Text('Download Resume', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 14)),
+            ],
+          ),
         ),
       ),
     );

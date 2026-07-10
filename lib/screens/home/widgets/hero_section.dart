@@ -205,12 +205,15 @@ class _HeroSectionState extends State<HeroSection>
             ),
           ],
         ),
-        child: Text(
-          label,
-          style: const TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w600,
-            fontSize: 14,
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            label,
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w600,
+              fontSize: 14,
+            ),
           ),
         ),
       ),
@@ -228,12 +231,15 @@ class _HeroSectionState extends State<HeroSection>
             color: theme.textTheme.bodyMedium?.color?.withValues(alpha: 0.3) ?? Colors.grey,
           ),
         ),
-        child: Text(
-          label,
-          style: TextStyle(
-            color: theme.textTheme.bodyLarge?.color,
-            fontWeight: FontWeight.w500,
-            fontSize: 14,
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            label,
+            style: TextStyle(
+              color: theme.textTheme.bodyLarge?.color,
+              fontWeight: FontWeight.w500,
+              fontSize: 14,
+            ),
           ),
         ),
       ),
