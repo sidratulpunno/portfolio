@@ -1,31 +1,4 @@
-class Education {
-  final String year;
-  final String title;
-  final String subtitle;
-  final String detail;
-  const Education(this.year, this.title, this.subtitle, this.detail);
-}
-
-class Publication {
-  final String date;
-  final String title;
-  final String venue;
-  const Publication(this.date, this.title, this.venue);
-}
-
-class Project {
-  final String title;
-  final String tech;
-  final List<String> points;
-  const Project(this.title, this.tech, this.points);
-}
-
-class Certification {
-  final String title;
-  final String verifyUrl;
-  final String imageUrl;
-  const Certification(this.title, this.verifyUrl, this.imageUrl);
-}
+import '../models/models.dart';
 
 class ResumeData {
   ResumeData._();
@@ -36,15 +9,15 @@ class ResumeData {
   static const phone = '+8801941529696';
   static const github = 'sidratulpunno';
   static const linkedin = 'sidratul-punno-51a0832b6';
+  static const portfolioRepo = 'https://github.com/sidratulpunno/portfolio';
+  static const resumeUrl = 'https://drive.google.com/file/d/1nR40C2p7q3Zfxd9ihVOl7iD_vItlwAI3/view';
 
-  static const summary =
-      'Engineering student specializing in High Performance Computing (HPC) '
+  static const summary = 'Engineering student specializing in High Performance Computing (HPC) '
       'and GPU accelerated Machine Learning using CUDA, cuML, and cuDF. '
       'Experienced in designing scalable ML pipelines, parallel computing '
       'workflows, and performance-optimized GPU systems. Also proficient in '
       'building production-grade Flutter applications integrated with AI '
-      'services. Seeking opportunities in HPC, GPU computing, and AI-driven '
-      'systems.';
+      'services.';
 
   static const interests = [
     'High-Performance Computing',
@@ -64,58 +37,74 @@ class ResumeData {
 
   static const publications = [
     Publication(
-        'Jan 2026',
-        'Transformer-Based Models for Student Mental Health Detection: A Comparative Study of BERT, RoBERTa and Gemma',
-        'IEEE ICECTE 2026, Rajshahi, Bangladesh'),
+      'Jan 2026',
+      'Transformer-Based Models for Student Mental Health Detection: A Comparative Study of BERT, RoBERTa and Gemma',
+      'IEEE ICECTE 2026, Rajshahi, Bangladesh'),
     Publication(
-        'Apr 2026',
-        'AgriMind: An IoT-Driven LLM Framework for Intelligent Precision Agriculture',
-        'IEEE QPAIN 2026, Chittagong, Bangladesh'),
+      'Apr 2026',
+      'AgriMind: An IoT-Driven LLM Framework for Intelligent Precision Agriculture',
+      'IEEE QPAIN 2026, Chittagong, Bangladesh'),
+    Publication(
+      'Jun 2026',
+      'IoT-Based Smart Homes: Technologies, Security Risks and Countermeasures',
+      'International Journal of Information Engineering and Electronic Business (IJIEEB) Vol. 18, No. 3'),
   ];
 
   static const skills = [
-    ('HPC & GPU Computing', [
-      'CUDA C/C++',
-      'NVIDIA RAPIDS',
-      'cuML',
-      'cuDF',
-      'Nsight Compute',
+    SkillCategory('HPC & GPU Computing', [
+      'CUDA C/C++', 'NVIDIA RAPIDS', 'cuML', 'cuDF', 'Nsight Compute',
     ]),
-    ('AI & Machine Learning', [
-      'Deep Learning',
-      'LoRA',
-      'LLM Fine Tuning',
-      'Computer Vision',
-      'RoBERTa',
+    SkillCategory('AI & Machine Learning', [
+      'Deep Learning', 'LoRA', 'LLM Fine Tuning', 'Computer Vision', 'RoBERTa',
     ]),
-    ('Mobile Development', ['Flutter', 'Firebase', 'TFLite']),
-    ('Languages', ['Python', 'CUDA C/C++', 'Dart', 'C', 'C++', 'Rust']),
-    ('Backend & IoT', ['FastAPI', 'Flask', 'Arduino', 'ESP32', 'Raspberry Pi']),
-    ('Tools & Platforms', ['Git', 'Docker', 'Linux', 'Azure', 'Altium']),
+    SkillCategory('Mobile Development', ['Flutter', 'Firebase', 'TFLite']),
+    SkillCategory('Languages', ['Python', 'CUDA C/C++', 'Dart', 'C', 'C++', 'Rust']),
+    SkillCategory('Backend & IoT', ['FastAPI', 'Flask', 'Arduino', 'ESP32', 'Raspberry Pi']),
+    SkillCategory('Tools & Platforms', ['Git', 'Docker', 'Linux', 'Azure', 'Altium']),
   ];
 
-  static const projects = [
-    Project('GPU-Accelerated ML Pipeline', 'CUDA | cuML | cuDF', [
-      'GPU-accelerated ML pipelines using NVIDIA RAPIDS ecosystem',
-      'cuDF for large-scale GPU data preprocessing',
-      'Multi-fold training speedups vs CPU-based workflows',
-    ]),
-    Project('Smart Navigation Assistant', 'AI | Flutter | CV', [
-      'AI-powered Flutter app for real-time assistive navigation with LLM',
-      'Object detection, distance estimation, and TTS-based guidance',
-    ]),
-    Project('Mental Health Detection', 'NLP | RoBERTa | Gemma', [
-      'Transformer model for mental health text classification',
-      'CLI-based inference for streamlined testing evaluation',
-    ]),
-    Project('Video Conferencing App', 'Flutter | Firebase | Jitsi', [
-      'Real-time video conferencing with Jitsi Meet SDK',
-      'Firebase auth, real-time chat, and meeting management',
-    ]),
-    Project('Smart Door Lock System', 'IoT | ESP32', [
-      'Cloud-connected security system with ESP32 microcontroller',
-      'Remote monitoring and secure access control via IoT',
-    ]),
+  static final projects = [
+    Project(
+      title: 'GPU-Accelerated ML Pipeline',
+      tech: 'CUDA | cuML | cuDF',
+      points: [
+        'GPU-accelerated ML pipelines using NVIDIA RAPIDS ecosystem',
+        'cuDF for large-scale GPU data preprocessing',
+        'Multi-fold training speedups vs CPU-based workflows',
+      ],
+    ),
+    Project(
+      title: 'Smart Navigation Assistant',
+      tech: 'AI | Flutter | CV',
+      points: [
+        'AI-powered Flutter app for real-time assistive navigation with LLM',
+        'Object detection, distance estimation, and TTS-based guidance',
+      ],
+    ),
+    Project(
+      title: 'Mental Health Detection',
+      tech: 'NLP | RoBERTa | Gemma',
+      points: [
+        'Transformer model for mental health text classification',
+        'CLI-based inference for streamlined testing evaluation',
+      ],
+    ),
+    Project(
+      title: 'Video Conferencing App',
+      tech: 'Flutter | Firebase | Jitsi',
+      points: [
+        'Real-time video conferencing with Jitsi Meet SDK',
+        'Firebase auth, real-time chat, and meeting management',
+      ],
+    ),
+    Project(
+      title: 'Smart Door Lock System',
+      tech: 'IoT | ESP32',
+      points: [
+        'Cloud-connected security system with ESP32 microcontroller',
+        'Remote monitoring and secure access control via IoT',
+      ],
+    ),
   ];
 
   static const certifications = [
@@ -134,15 +123,41 @@ class ResumeData {
     Certification('AI Fluency: Framework & Foundations', 'https://verify.skilljar.com/c/m3t6rum2y2px', 'https://cc.sj-cdn.net/certificate/17owe4fx9adox/certificate-m3t6rum2y2px-1781688207.jpg?Expires=1783685016&Signature=Tk~JPFIi81SFj4Xicxm7YtWxzPT6gb95QAmwbhgW1O8v~ddhEevJ4bQKoy46lcUu3UOngJnWhhDs~VsMZBE6jngQAfthtx4DqyiwIi~SHYoyg5slK18UA1i4BozNoV2zUfJOlIKTcuKLW664AzKmL8ROugde7S4yynmfWhzFzDflDgUnNYP~SnaBIGb4T22KPkTtuYMKCMzYbyOPi8LP8U9D-Gv-pAnsh8aCSDZ740k9TPdhTeyeT0q4WEkMH517fRSavzGhY90P0QzV9-U5mWwlP0bGAQ9Jum7pijE-smWis9h004-5~c2izyziVE4y6C1vAMUTnjMGxYpVIvg4Qw__&Key-Pair-Id=APKAI3B7HFD2VYJQK4MQ'),
     Certification('Claude 101', 'https://verify.skilljar.com/c/wfmycoovhkd6', 'https://cc.sj-cdn.net/certificate/22npsux5ldfq0/certificate-wfmycoovhkd6-1781687868.jpg?Expires=1783685013&Signature=nbByVOlbwYTpPMjGLO6DHg8XPN64glvTtGQu4csp4To~fA7xHm~LVfsIONECSMuC7UGidXGCZVcLJ35SfRSVOmMztDzWhGB6Wpq3pG8KFKx2Rt04qK6RZNoKk1EzS6M6qRZPk7feeS0CtQ5hmJmqWW3D6Y2Y8AdYv33WS52zhDKtQACw-FpQBCCajfhloCX-rj2k4r0BrpK7Ox3NXLyHXVzqv0iqqN649JMxXeQr6POSr6lYwRlYsujamIn0IL1ZbaKhArFuS1D4GdxSD9LX-MZa6ZesdEerDkDSEfB2jOUUxeO5Hpc4NCeWSwP9xOlrK0tEbSCfVzbq1WWdfksczA__&Key-Pair-Id=APKAI3B7HFD2VYJQK4MQ'),
   ];
+
   static const badges = [
-    ('Building AI-Powered Search with MongoDB Vector Search', 'https://www.credly.com/badges/c7dc30b0-da8a-4a72-a75b-f43fabb6c4e5','https://images.credly.com/images/730e9c82-7869-4288-b580-9f8500a94465/blob'),
-    ('Building RAG Apps Using MongoDB', 'https://www.credly.com/badges/70617833-ec67-4564-bd8b-786a4c6ad97c','https://images.credly.com/images/2aff887d-ee1e-479f-b26f-dcb20d647bd6/blob'),
+    Badge('Building AI-Powered Search with MongoDB Vector Search', 'https://www.credly.com/badges/c7dc30b0-da8a-4a72-a75b-f43fabb6c4e5', 'https://images.credly.com/images/730e9c82-7869-4288-b580-9f8500a94465/blob'),
+    Badge('Building RAG Apps Using MongoDB', 'https://www.credly.com/badges/70617833-ec67-4564-bd8b-786a4c6ad97c', 'https://images.credly.com/images/2aff887d-ee1e-479f-b26f-dcb20d647bd6/blob'),
   ];
 
   static const honors = [
-    ('2023 – 2025', 'Dean\'s Award — 3 Consecutive Years'),
-    ('2017', 'President\'s Scout Award — Honorable President of Bangladesh'),
+    ('2023 – 2025', "Dean's Award — 3 Consecutive Years"),
+    ('2017', "President's Scout Award — Honorable President of Bangladesh"),
     ('2018', 'Community Development Award — Ministry Level'),
     ('2012', 'Junior Scholarship'),
+  ];
+
+  static final experiences = [
+    Experience(
+      company: 'University of Frontier Technology',
+      role: 'Undergraduate Research Assistant',
+      period: 'Jan 2025 – Present',
+      description: 'Research on NLP and GPU-accelerated ML for mental health detection.',
+      highlights: [
+        'Developed transformer-based models for mental health text classification',
+        'Optimized training pipelines using CUDA and NVIDIA RAPIDS',
+        'Published 2 IEEE papers on AI-driven healthcare solutions',
+      ],
+    ),
+    Experience(
+      company: 'Independent Projects',
+      role: 'HPC & AI Engineer (Freelance)',
+      period: '2024 – Present',
+      description: 'Building GPU-accelerated ML solutions and production-grade Flutter apps.',
+      highlights: [
+        'Designed end-to-end ML pipelines with cuML and cuDF',
+        'Built AI-powered Flutter applications integrating LLM APIs',
+        'Developed IoT systems with cloud connectivity and real-time monitoring',
+      ],
+    ),
   ];
 }
