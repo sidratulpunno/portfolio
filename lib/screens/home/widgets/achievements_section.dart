@@ -4,7 +4,6 @@ import '../../../theme/app_theme.dart';
 import '../../../data/resume_data.dart';
 import '../../../widgets/animated_section.dart';
 import '../../../widgets/section_header.dart';
-import '../../../widgets/credential_card.dart';
 
 class AchievementsSection extends StatelessWidget {
   const AchievementsSection({super.key});
@@ -19,7 +18,7 @@ class AchievementsSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           AnimatedSection(
-            child: const SectionHeader(title: 'Achievements', subtitle: 'Honors, awards, and digital credentials'),
+            child: const SectionHeader(title: 'Achievements', subtitle: 'Honors and awards'),
           ),
           const SizedBox(height: 32),
           ...ResumeData.honors.map((h) => Padding(
@@ -37,34 +36,6 @@ class AchievementsSection extends StatelessWidget {
               ],
             ),
           )),
-          if (ResumeData.badges.isNotEmpty) ...[
-            const SizedBox(height: 48),
-            AnimatedSection(
-              delayMs: 100,
-              child: const SectionHeader(title: 'Badges'),
-            ),
-            const SizedBox(height: 32),
-            GridView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: AppTheme.gridColumns(context) == 1 ? 1 : 2,
-                crossAxisSpacing: 16,
-                mainAxisSpacing: 16,
-                mainAxisExtent: 280,
-              ),
-              itemCount: ResumeData.badges.length,
-              itemBuilder: (_, i) => AnimatedSection(
-                delayMs: i * 100,
-                child: CredentialCard(
-                  title: ResumeData.badges[i].title,
-                  imageUrl: ResumeData.badges[i].imageUrl,
-                  verifyUrl: ResumeData.badges[i].verifyUrl,
-                  verifyLabel: 'Verify Badge',
-                ),
-              ),
-            ),
-          ],
         ],
       ),
     );

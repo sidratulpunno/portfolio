@@ -70,15 +70,24 @@ class _HeroSectionState extends State<HeroSection>
                     _buildName(theme, isMobile),
                     const SizedBox(height: 12),
                     _buildTagline(isMobile),
-                    const SizedBox(height: 48),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        _buildCta('View Projects', () {}),
-                        const SizedBox(width: 16),
-                        _buildCtaOutline('Download Resume', () => launchUrlExternal(ResumeData.resumeUrl), theme),
-                      ],
-                    ),
+                    const SizedBox(height: 40),
+                    isMobile
+                        ? Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              _buildCta('View Projects', () {}),
+                              const SizedBox(height: 12),
+                              _buildCtaOutline('Download Resume', () => launchUrlExternal(ResumeData.resumeUrl), theme),
+                            ],
+                          )
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              _buildCta('View Projects', () {}),
+                              const SizedBox(width: 16),
+                              _buildCtaOutline('Download Resume', () => launchUrlExternal(ResumeData.resumeUrl), theme),
+                            ],
+                          ),
                     const Spacer(flex: 2),
                     _buildScrollIndicator(),
                   ],

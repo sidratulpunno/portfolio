@@ -14,9 +14,7 @@ class CertificationsSection extends StatelessWidget {
     final cols = AppTheme.gridColumns(context);
 
     return Container(
-      color: Theme.of(context).brightness == Brightness.dark
-          ? null
-          : null,
+      color: Theme.of(context).brightness == Brightness.dark ? null : null,
       padding: EdgeInsets.symmetric(horizontal: pad.horizontal, vertical: AppTheme.sectionSpacing(context)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,6 +46,37 @@ class CertificationsSection extends StatelessWidget {
               ),
             ),
           ),
+          if (ResumeData.badges.isNotEmpty) ...[
+            const SizedBox(height: 64),
+            AnimatedSection(
+              delayMs: 200,
+              child: const SectionHeader(
+                title: 'Badges',
+                subtitle: 'Digital credentials and micro-certifications',
+              ),
+            ),
+            const SizedBox(height: 32),
+            GridView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: cols == 1 ? 1 : 2,
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 16,
+                mainAxisExtent: 280,
+              ),
+              itemCount: ResumeData.badges.length,
+              itemBuilder: (_, i) => AnimatedSection(
+                delayMs: i * 100,
+                child: CredentialCard(
+                  title: ResumeData.badges[i].title,
+                  imageUrl: ResumeData.badges[i].imageUrl,
+                  verifyUrl: ResumeData.badges[i].verifyUrl,
+                  verifyLabel: 'Verify Badge',
+                ),
+              ),
+            ),
+          ],
         ],
       ),
     );

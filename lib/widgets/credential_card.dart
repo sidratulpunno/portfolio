@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../theme/colors.dart';
 import '../utils/launch.dart';
+import 'app_image.dart';
 import 'glass_card.dart';
 
 class CredentialCard extends StatefulWidget {
@@ -27,7 +28,6 @@ class _CredentialCardState extends State<CredentialCard> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final dark = Theme.of(context).brightness == Brightness.dark;
     return MouseRegion(
       onEnter: (_) => setState(() => _hover = true),
       onExit: (_) => setState(() => _hover = false),
@@ -67,32 +67,11 @@ class _CredentialCardState extends State<CredentialCard> {
                 Expanded(
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
-                    child: Image.network(
-                      widget.imageUrl,
+                    child: AppImage(
+                      src: widget.imageUrl,
                       fit: BoxFit.contain,
                       width: double.infinity,
                       height: double.infinity,
-                      loadingBuilder: (_, child, progress) {
-                        if (progress == null) return child;
-                        return Container(
-                          color: dark ? PortfolioColors.cardDark : PortfolioColors.borderLight,
-                          child: Center(
-                            child: SizedBox(
-                              width: 20, height: 20,
-                              child: CircularProgressIndicator(
-                                strokeWidth: 2,
-                                color: PortfolioColors.accent.withValues(alpha: 0.5),
-                              ),
-                            ),
-                          ),
-                        );
-                      },
-                      errorBuilder: (_, _, _) => Container(
-                        color: dark ? PortfolioColors.cardDark : PortfolioColors.borderLight,
-                        child: Center(
-                          child: Icon(Icons.image_outlined, color: PortfolioColors.textTertiaryDark.withValues(alpha: 0.5), size: 28),
-                        ),
-                      ),
                     ),
                   ),
                 ),
