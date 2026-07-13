@@ -126,7 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Text('SP', style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700, color: Theme.of(context).textTheme.titleLarge?.color)),
             ),
             Divider(color: Theme.of(context).dividerColor),
-            ...items.map((item) => ListTile(
+            ...items.map((item) => Builder(builder: (ctx) => ListTile(
               leading: Icon(item == 'resume' ? Icons.description : Icons.circle,
                 size: item == 'resume' ? 20 : 8,
                 color: PortfolioColors.accent,
@@ -134,9 +134,9 @@ class _HomeScreenState extends State<HomeScreen> {
               title: Text(item[0].toUpperCase() + item.substring(1), style: TextStyle(color: Theme.of(context).textTheme.titleMedium?.color, fontWeight: FontWeight.w500)),
               onTap: () {
                 _scrollTo(item);
-                Scaffold.of(context).closeDrawer();
+                Scaffold.of(ctx).closeDrawer();
               },
-            )),
+            ))),
           ],
         ),
       ),
