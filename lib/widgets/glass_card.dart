@@ -1,83 +1,92 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../theme/colors.dart';
 
 class GlassCard extends StatelessWidget {
   final Widget child;
   final EdgeInsetsGeometry? padding;
-  final double blur;
-  final double opacity;
+  final double radius;
   final VoidCallback? onTap;
   final bool gradientBorder;
   final bool glow;
+  final bool emphasize;
 
   const GlassCard({
     super.key,
     required this.child,
     this.padding,
-    this.blur = 16,
-    this.opacity = 0.06,
+    this.radius = 16,
     this.onTap,
-    this.gradientBorder = false,
+    this.gradientBorder = true,
     this.glow = false,
+    this.emphasize = false,
   });
 
   @override
   Widget build(BuildContext context) {
     final dark = Theme.of(context).brightness == Brightness.dark;
-    final bgColor = (dark ? Colors.white : Colors.black).withValues(alpha: opacity);
+    final bg = dark
+        ? PortfolioColors.cardDark.withValues(alpha: 0.88)
+        : Colors.white.withValues(alpha: 0.9);
 
     Widget card = Container(
       padding: padding ?? const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: bgColor,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: (dark ? Colors.white : Colors.black).withValues(alpha: 0.08),
-        ),
-        boxShadow: glow
-            ? [
-                BoxShadow(
-                  color: PortfolioColors.accent.withValues(alpha: dark ? 0.08 : 0.06),
-                  blurRadius: 24,
-                  spreadRadius: 1,
-                ),
-              ]
-            : null,
+        color: bg,
+        borderRadius: BorderRadius.circular(radius),
+        border: gradientBorder
+            ? null
+            : Border.all(
+                color: dark
+                    ? Colors.white.withValues(alpha: 0.08)
+                    : Colors.grey.shade200,
+              ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: dark ? 0.35 : 0.05),
+            blurRadius: 20,
+            offset: const Offset(0, 4),
+          ),
+          if (glow || emphasize)
+            BoxShadow(
+              color: PortfolioColors.accent.withValues(
+                alpha: dark ? 0.3 : 0.18,
+              ),
+              blurRadius: emphasize ? 30 : 18,
+              spreadRadius: emphasize ? 2 : 0,
+            ),
+        ],
       ),
       child: child,
     );
 
     if (gradientBorder) {
       card = Container(
+        padding: const EdgeInsets.all(1),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(radius),
           gradient: LinearGradient(
-            colors: [
-              PortfolioColors.accent.withValues(alpha: 0.3),
-              PortfolioColors.accentLight.withValues(alpha: 0.1),
-              PortfolioColors.accent.withValues(alpha: 0.2),
-            ],
+            colors: emphasize
+                ? [
+                    PortfolioColors.accent.withValues(alpha: 0.9),
+                    PortfolioColors.accentLight.withValues(alpha: 0.45),
+                    PortfolioColors.accent.withValues(alpha: 0.75),
+                  ]
+                : [
+                    PortfolioColors.accent.withValues(alpha: 0.22),
+                    PortfolioColors.accentLight.withValues(alpha: 0.12),
+                    PortfolioColors.accent.withValues(alpha: 0.18),
+                  ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
         ),
-        padding: const EdgeInsets.all(1),
         child: card,
       );
     }
 
-    final result = ClipRRect(
-      borderRadius: BorderRadius.circular(16),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
-        child: card,
-      ),
-    );
-
     if (onTap != null) {
-      return GestureDetector(onTap: onTap, child: result);
+      return GestureDetector(onTap: onTap, child: card);
     }
-    return result;
+    return card;
   }
 }

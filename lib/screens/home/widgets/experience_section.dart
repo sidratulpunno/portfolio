@@ -15,9 +15,12 @@ class ExperienceSection extends StatelessWidget {
 
     return Container(
       color: Theme.of(context).brightness == Brightness.dark
-          ? PortfolioColors.cardDark
-          : PortfolioColors.borderLight.withValues(alpha: 0.3),
-      padding: EdgeInsets.symmetric(horizontal: pad.horizontal, vertical: AppTheme.sectionSpacing(context)),
+          ? PortfolioColors.sectionAltDark
+          : PortfolioColors.sectionAltLight,
+      padding: EdgeInsets.symmetric(
+        horizontal: pad.horizontal,
+        vertical: AppTheme.sectionSpacing(context),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -25,19 +28,22 @@ class ExperienceSection extends StatelessWidget {
             child: const SectionHeader(
               title: 'Experience',
               subtitle: 'Professional journey and research work',
+              index: '09',
             ),
           ),
           const SizedBox(height: 48),
-          ...ResumeData.experiences.asMap().entries.map((entry) => AnimatedSection(
-            delayMs: entry.key * 150,
-            child: TimelineItem(
-              company: entry.value.company,
-              role: entry.value.role,
-              period: entry.value.period,
-              description: entry.value.description,
-              highlights: entry.value.highlights,
+          ...ResumeData.experiences.asMap().entries.map(
+            (entry) => AnimatedSection(
+              delayMs: entry.key * 150,
+              child: TimelineItem(
+                company: entry.value.company,
+                role: entry.value.role,
+                period: entry.value.period,
+                description: entry.value.description,
+                highlights: entry.value.highlights,
+              ),
             ),
-          )),
+          ),
         ],
       ),
     );

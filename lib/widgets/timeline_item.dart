@@ -35,12 +35,17 @@ class TimelineItem extends StatelessWidget {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     gradient: LinearGradient(
-                      colors: [PortfolioColors.accent, PortfolioColors.accentLight],
+                      colors: [
+                        PortfolioColors.accent,
+                        PortfolioColors.accentLight,
+                      ],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
                     border: Border.all(
-                      color: dark ? PortfolioColors.surfaceDark : PortfolioColors.surfaceLight,
+                      color: dark
+                          ? PortfolioColors.surfaceDark
+                          : PortfolioColors.surfaceLight,
                       width: 2,
                     ),
                     boxShadow: [
@@ -78,7 +83,10 @@ class TimelineItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 4,
+                    ),
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
@@ -102,7 +110,9 @@ class TimelineItem extends StatelessWidget {
                   const SizedBox(height: 12),
                   Text(
                     role,
-                    style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600),
+                    style: theme.textTheme.titleLarge?.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                   const SizedBox(height: 4),
                   Text(
@@ -114,42 +124,45 @@ class TimelineItem extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 12),
-                  Text(
-                    description,
-                    style: theme.textTheme.bodyMedium,
-                  ),
+                  Text(description, style: theme.textTheme.bodyMedium),
                   if (highlights.isNotEmpty) ...[
                     const SizedBox(height: 16),
-                    ...highlights.asMap().entries.map((entry) => Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.only(top: 6),
-                            width: 5,
-                            height: 5,
-                            decoration: BoxDecoration(
-                              color: PortfolioColors.accent,
-                              shape: BoxShape.circle,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: PortfolioColors.accent.withValues(alpha: 0.3),
-                                  blurRadius: 3,
+                    ...highlights.asMap().entries.map(
+                      (entry) => Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.only(top: 6),
+                              width: 5,
+                              height: 5,
+                              decoration: BoxDecoration(
+                                color: PortfolioColors.accent,
+                                shape: BoxShape.circle,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: PortfolioColors.accent.withValues(
+                                      alpha: 0.3,
+                                    ),
+                                    blurRadius: 3,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(width: 10),
+                            Expanded(
+                              child: Text(
+                                entry.value,
+                                style: theme.textTheme.bodySmall?.copyWith(
+                                  fontSize: 14,
                                 ),
-                              ],
+                              ),
                             ),
-                          ),
-                          const SizedBox(width: 10),
-                          Expanded(
-                            child: Text(
-                              entry.value,
-                              style: theme.textTheme.bodySmall?.copyWith(fontSize: 14),
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    )),
+                    ),
                   ],
                 ],
               ),

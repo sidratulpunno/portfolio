@@ -8,7 +8,13 @@ class AppImageImpl extends StatelessWidget {
   final double? width;
   final double? height;
 
-  const AppImageImpl({super.key, required this.src, this.fit = BoxFit.contain, this.width, this.height});
+  const AppImageImpl({
+    super.key,
+    required this.src,
+    this.fit = BoxFit.contain,
+    this.width,
+    this.height,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +28,8 @@ class AppImageImpl extends StatelessWidget {
         color: dark ? PortfolioColors.cardDark : PortfolioColors.borderLight,
         child: Center(
           child: SizedBox(
-            width: 20, height: 20,
+            width: 20,
+            height: 20,
             child: CircularProgressIndicator(
               strokeWidth: 2,
               color: PortfolioColors.accent.withValues(alpha: 0.5),
@@ -33,7 +40,11 @@ class AppImageImpl extends StatelessWidget {
       errorWidget: (_, _, _) => Container(
         color: dark ? PortfolioColors.cardDark : PortfolioColors.borderLight,
         child: Center(
-          child: Icon(Icons.image_outlined, color: PortfolioColors.textTertiaryDark.withValues(alpha: 0.5), size: 28),
+          child: Icon(
+            Icons.image_outlined,
+            color: PortfolioColors.textTertiaryDark.withValues(alpha: 0.5),
+            size: 28,
+          ),
         ),
       ),
     );

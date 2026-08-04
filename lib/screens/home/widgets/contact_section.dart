@@ -4,7 +4,7 @@ import '../../../theme/app_theme.dart';
 import '../../../data/resume_data.dart';
 import '../../../utils/launch.dart';
 import '../../../widgets/animated_section.dart';
-import '../../../widgets/glass_card.dart';
+import '../../../widgets/hover_card.dart';
 
 class ContactSection extends StatelessWidget {
   const ContactSection({super.key});
@@ -16,17 +16,48 @@ class ContactSection extends StatelessWidget {
 
     return Container(
       color: Theme.of(context).brightness == Brightness.dark
-          ? PortfolioColors.cardDark
-          : PortfolioColors.borderLight.withValues(alpha: 0.3),
-      padding: EdgeInsets.symmetric(horizontal: pad.horizontal, vertical: AppTheme.sectionSpacing(context)),
+          ? PortfolioColors.sectionAltDark
+          : PortfolioColors.sectionAltLight,
+      padding: EdgeInsets.symmetric(
+        horizontal: pad.horizontal,
+        vertical: AppTheme.sectionSpacing(context),
+      ),
       child: Column(
         children: [
           AnimatedSection(
             child: Column(
               children: [
                 Text(
+                  '08',
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 1,
+                    color: PortfolioColors.accent,
+                    fontFeatures: [FontFeature.tabularFigures()],
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Container(
+                  width: 40,
+                  height: 2,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        PortfolioColors.accent,
+                        PortfolioColors.accentLight,
+                      ],
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Text(
                   "Let's Connect",
-                  style: theme.textTheme.headlineMedium,
+                  style: theme.textTheme.headlineMedium?.copyWith(
+                    fontWeight: FontWeight.w700,
+                  ),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 12),
@@ -41,28 +72,58 @@ class ContactSection extends StatelessWidget {
           const SizedBox(height: 48),
           AnimatedSection(
             delayMs: 200,
-            child: GlassCard(
-              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 32),
-              child: Wrap(
-                spacing: 16,
-                runSpacing: 16,
-                alignment: WrapAlignment.center,
-                children: [
-                  _ContactIcon(Icons.code, 'GitHub',
-                      'https://github.com/${ResumeData.github}'),
-                  _ContactIcon(Icons.workspace_premium, 'LinkedIn',
-                      'https://linkedin.com/in/${ResumeData.linkedin}'),
-                  _ContactIcon(Icons.email_outlined, 'Email',
-                      'mailto:${ResumeData.email}'),
-                ],
-              ),
+            child: LayoutBuilder(
+              builder: (context, c) {
+                final blocks = [
+                  _ContactBlock(
+                    icon: Icons.code,
+                    label: 'GitHub',
+                    handle: '@${ResumeData.github}',
+                    url: 'https://github.com/${ResumeData.github}',
+                    brandColor: const Color(0xFF24292F),
+                  ),
+                  _ContactBlock(
+                    icon: Icons.workspace_premium,
+                    label: 'LinkedIn',
+                    handle: 'in/${ResumeData.linkedin}',
+                    url: 'https://linkedin.com/in/${ResumeData.linkedin}',
+                    brandColor: const Color(0xFF0A66C2),
+                  ),
+                  _ContactBlock(
+                    icon: Icons.email_outlined,
+                    label: 'Email',
+                    handle: ResumeData.email,
+                    url: 'mailto:${ResumeData.email}',
+                    brandColor: const Color(0xFFEA4335),
+                  ),
+                ];
+                if (c.maxWidth > 640) {
+                  return IntrinsicHeight(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        for (var i = 0; i < blocks.length; i++) ...[
+                          if (i > 0) const SizedBox(width: 16),
+                          Expanded(child: blocks[i]),
+                        ],
+                      ],
+                    ),
+                  );
+                }
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    for (var i = 0; i < blocks.length; i++) ...[
+                      if (i > 0) const SizedBox(height: 16),
+                      blocks[i],
+                    ],
+                  ],
+                );
+              },
             ),
           ),
           const SizedBox(height: 64),
-          AnimatedSection(
-            delayMs: 400,
-            child: _buildFooter(context),
-          ),
+          AnimatedSection(delayMs: 400, child: _buildFooter(context)),
         ],
       ),
     );
@@ -110,7 +171,9 @@ class ContactSection extends StatelessWidget {
           '\u00a9 ${DateTime.now().year} Sidratul Punno. All rights reserved.',
           style: TextStyle(
             fontSize: 12,
-            color: Theme.of(context).textTheme.bodySmall?.color?.withValues(alpha: 0.5),
+            color: Theme.of(
+              context,
+            ).textTheme.bodySmall?.color?.withValues(alpha: 0.5),
           ),
         ),
       ],
@@ -118,57 +181,57 @@ class ContactSection extends StatelessWidget {
   }
 }
 
-class _ContactIcon extends StatefulWidget {
+class _ContactBlock extends StatelessWidget {
   final IconData icon;
   final String label;
+  final String handle;
   final String url;
-  const _ContactIcon(this.icon, this.label, this.url);
-
-  @override
-  State<_ContactIcon> createState() => _ContactIconState();
-}
-
-class _ContactIconState extends State<_ContactIcon> {
-  bool _hover = false;
+  final Color brandColor;
+  const _ContactBlock({
+    required this.icon,
+    required this.label,
+    required this.handle,
+    required this.url,
+    required this.brandColor,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final dark = Theme.of(context).brightness == Brightness.dark;
-    return MouseRegion(
-      onEnter: (_) => setState(() => _hover = true),
-      onExit: (_) => setState(() => _hover = false),
-      child: GestureDetector(
-        onTap: () => launchUrlExternal(widget.url),
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-          decoration: BoxDecoration(
-            color: _hover ? PortfolioColors.accent.withValues(alpha: 0.12) : Colors.transparent,
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(
-              color: _hover
-                  ? PortfolioColors.accent.withValues(alpha: 0.3)
-                  : (dark ? PortfolioColors.borderDark : PortfolioColors.borderLight),
-            ),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
+    final theme = Theme.of(context);
+    final dark = theme.brightness == Brightness.dark;
+    final fg = dark ? Color.lerp(brandColor, Colors.white, 0.4)! : brandColor;
+    return HoverCard(
+      padding: const EdgeInsets.all(18),
+      onTap: () => launchUrlExternal(url),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
             children: [
-              Icon(widget.icon, size: 18,
-                color: _hover ? PortfolioColors.accent : (dark ? PortfolioColors.textSecondaryDark : PortfolioColors.textSecondaryLight),
-              ),
-              const SizedBox(width: 8),
-              Text(
-                widget.label,
-                style: TextStyle(
-                  fontSize: 14,
-                  color: _hover ? PortfolioColors.accent : (dark ? PortfolioColors.textSecondaryDark : PortfolioColors.textSecondaryLight),
-                  fontWeight: FontWeight.w500,
+              Icon(icon, size: 18, color: fg),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Text(
+                  label,
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                    color: theme.textTheme.titleMedium?.color,
+                  ),
                 ),
               ),
             ],
           ),
-        ),
+          const SizedBox(height: 8),
+          Text(
+            handle,
+            style: theme.textTheme.bodySmall?.copyWith(
+              color: PortfolioColors.accent,
+              fontWeight: FontWeight.w500,
+            ),
+            overflow: TextOverflow.ellipsis,
+          ),
+        ],
       ),
     );
   }

@@ -5,14 +5,29 @@ class SkillChip extends StatelessWidget {
   final String label;
   final bool small;
   final bool filled;
-  const SkillChip({super.key, required this.label, this.small = false, this.filled = false});
+  final SkillPalette? palette;
+  const SkillChip({
+    super.key,
+    required this.label,
+    this.small = false,
+    this.filled = false,
+    this.palette,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final dark = Theme.of(context).brightness == Brightness.dark;
+    final p = palette ?? PortfolioColors.mint;
+    final bg = dark ? p.foreground.withValues(alpha: 0.16) : p.background;
+    final fg = dark
+        ? Color.lerp(p.foreground, Colors.white, 0.45)!
+        : p.foreground;
+    final border = dark ? p.foreground.withValues(alpha: 0.35) : p.border;
+
     return Container(
       padding: EdgeInsets.symmetric(
-        horizontal: small ? 10 : 14,
-        vertical: small ? 5 : 8,
+        horizontal: small ? 12 : 12,
+        vertical: small ? 6 : 6,
       ),
       decoration: BoxDecoration(
         gradient: filled
@@ -25,13 +40,9 @@ class SkillChip extends StatelessWidget {
                 end: Alignment.bottomRight,
               )
             : null,
-        color: filled ? null : PortfolioColors.accent.withValues(alpha: 0.08),
-        borderRadius: BorderRadius.circular(100),
-        border: Border.all(
-          color: filled
-              ? Colors.transparent
-              : PortfolioColors.accent.withValues(alpha: 0.2),
-        ),
+        color: filled ? null : bg,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: filled ? Colors.transparent : border),
         boxShadow: filled
             ? [
                 BoxShadow(
@@ -47,7 +58,7 @@ class SkillChip extends StatelessWidget {
         style: TextStyle(
           fontSize: small ? 11 : 13,
           fontWeight: FontWeight.w500,
-          color: filled ? Colors.white : PortfolioColors.accent,
+          color: filled ? Colors.white : fg,
         ),
       ),
     );

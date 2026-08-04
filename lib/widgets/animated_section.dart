@@ -5,7 +5,12 @@ class AnimatedSection extends StatefulWidget {
   final Widget child;
   final int delayMs;
   final ScrollController? scrollController;
-  const AnimatedSection({super.key, required this.child, this.delayMs = 0, this.scrollController});
+  const AnimatedSection({
+    super.key,
+    required this.child,
+    this.delayMs = 0,
+    this.scrollController,
+  });
 
   @override
   State<AnimatedSection> createState() => _AnimatedSectionState();
@@ -25,9 +30,10 @@ class _AnimatedSectionState extends State<AnimatedSection>
       vsync: this,
       duration: const Duration(milliseconds: 900),
     );
-    _opacity = Tween<double>(begin: 0, end: 1).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeOut),
-    );
+    _opacity = Tween<double>(
+      begin: 0,
+      end: 1,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
     _slide = Tween<Offset>(
       begin: const Offset(0, 0.05),
       end: Offset.zero,

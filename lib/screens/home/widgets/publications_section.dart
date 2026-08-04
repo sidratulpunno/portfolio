@@ -17,20 +17,29 @@ class PublicationsSection extends StatelessWidget {
 
     return Container(
       color: Theme.of(context).brightness == Brightness.dark
-          ? PortfolioColors.cardDark
-          : PortfolioColors.borderLight.withValues(alpha: 0.3),
-      padding: EdgeInsets.symmetric(horizontal: pad.horizontal, vertical: AppTheme.sectionSpacing(context)),
+          ? PortfolioColors.sectionAltDark
+          : PortfolioColors.sectionAltLight,
+      padding: EdgeInsets.symmetric(
+        horizontal: pad.horizontal,
+        vertical: AppTheme.sectionSpacing(context),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           AnimatedSection(
-            child: const SectionHeader(title: 'Publications', subtitle: 'Peer-reviewed research papers'),
+            child: const SectionHeader(
+              title: 'Publications',
+              subtitle: 'Peer-reviewed research papers',
+              index: '03',
+            ),
           ),
           const SizedBox(height: 48),
           ...List.generate(ResumeData.publications.length, (i) {
             final pub = ResumeData.publications[i];
             return Padding(
-              padding: EdgeInsets.only(bottom: i < ResumeData.publications.length - 1 ? 20 : 0),
+              padding: EdgeInsets.only(
+                bottom: i < ResumeData.publications.length - 1 ? 20 : 0,
+              ),
               child: AnimatedSection(
                 delayMs: i * 100,
                 child: GlassCard(
@@ -42,12 +51,24 @@ class PublicationsSection extends StatelessWidget {
                             SizedBox(
                               width: 100,
                               child: Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 10,
+                                  vertical: 6,
+                                ),
                                 decoration: BoxDecoration(
-                                  color: PortfolioColors.accent.withValues(alpha: 0.1),
+                                  color: PortfolioColors.accent.withValues(
+                                    alpha: 0.1,
+                                  ),
                                   borderRadius: BorderRadius.circular(6),
                                 ),
-                                child: Text(pub.date, style: TextStyle(fontSize: 12, color: PortfolioColors.accent, fontWeight: FontWeight.w600)),
+                                child: Text(
+                                  pub.date,
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: PortfolioColors.accent,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
                               ),
                             ),
                             const SizedBox(width: 24),
@@ -55,9 +76,19 @@ class PublicationsSection extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(pub.title, style: TextStyle(fontSize: 15, color: theme.textTheme.titleMedium?.color, fontWeight: FontWeight.w500)),
+                                  Text(
+                                    pub.title,
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      color: theme.textTheme.titleMedium?.color,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
                                   const SizedBox(height: 8),
-                                  Text(pub.venue, style: theme.textTheme.bodySmall),
+                                  Text(
+                                    pub.venue,
+                                    style: theme.textTheme.bodySmall,
+                                  ),
                                 ],
                               ),
                             ),
@@ -67,15 +98,34 @@ class PublicationsSection extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 10,
+                                vertical: 6,
+                              ),
                               decoration: BoxDecoration(
-                                color: PortfolioColors.accent.withValues(alpha: 0.1),
+                                color: PortfolioColors.accent.withValues(
+                                  alpha: 0.1,
+                                ),
                                 borderRadius: BorderRadius.circular(6),
                               ),
-                              child: Text(pub.date, style: TextStyle(fontSize: 12, color: PortfolioColors.accent, fontWeight: FontWeight.w600)),
+                              child: Text(
+                                pub.date,
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: PortfolioColors.accent,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
                             ),
                             const SizedBox(height: 12),
-                            Text(pub.title, style: TextStyle(fontSize: 15, color: theme.textTheme.titleMedium?.color, fontWeight: FontWeight.w500)),
+                            Text(
+                              pub.title,
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: theme.textTheme.titleMedium?.color,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
                             const SizedBox(height: 8),
                             Text(pub.venue, style: theme.textTheme.bodySmall),
                           ],

@@ -37,24 +37,38 @@ class AppTheme {
     return ThemeData(
       brightness: brightness,
       useMaterial3: true,
-      fontFamily: GoogleFonts.inter().fontFamily,
+      fontFamily: GoogleFonts.spaceGrotesk().fontFamily,
       colorScheme: ColorScheme(
         brightness: brightness,
         primary: PortfolioColors.accent,
         onPrimary: Colors.white,
         secondary: PortfolioColors.accent,
         onSecondary: Colors.white,
-        tertiary: dark ? PortfolioColors.accentLight : PortfolioColors.accentDark,
+        tertiary: dark
+            ? PortfolioColors.accentLight
+            : PortfolioColors.accentDark,
         error: PortfolioColors.error,
         onError: Colors.white,
-        surface: dark ? PortfolioColors.surfaceDark : PortfolioColors.surfaceLight,
-        onSurface: dark ? PortfolioColors.textPrimaryDark : PortfolioColors.textPrimaryLight,
-        surfaceContainerHighest: dark ? PortfolioColors.cardDark : PortfolioColors.cardLight,
-        outline: dark ? PortfolioColors.borderDark : PortfolioColors.borderLight,
+        surface: dark
+            ? PortfolioColors.surfaceDark
+            : PortfolioColors.surfaceLight,
+        onSurface: dark
+            ? PortfolioColors.textPrimaryDark
+            : PortfolioColors.textPrimaryLight,
+        surfaceContainerHighest: dark
+            ? PortfolioColors.cardDark
+            : PortfolioColors.cardLight,
+        outline: dark
+            ? PortfolioColors.borderDark
+            : PortfolioColors.borderLight,
       ),
-      scaffoldBackgroundColor: dark ? PortfolioColors.surfaceDark : PortfolioColors.surfaceLight,
+      scaffoldBackgroundColor: dark
+          ? PortfolioColors.surfaceDark
+          : PortfolioColors.surfaceLight,
       textTheme: dark ? AppTypography.dark : AppTypography.light,
-      dividerColor: dark ? PortfolioColors.borderDark : PortfolioColors.borderLight,
+      dividerColor: dark
+          ? PortfolioColors.borderDark
+          : PortfolioColors.borderLight,
       dividerTheme: DividerThemeData(
         color: dark ? PortfolioColors.borderDark : PortfolioColors.borderLight,
         thickness: 1,
@@ -62,20 +76,33 @@ class AppTheme {
       ),
       cardTheme: CardThemeData(
         color: dark ? PortfolioColors.cardDark : PortfolioColors.cardLight,
-        elevation: 0,
+        elevation: 4,
+        shadowColor: Colors.black.withValues(alpha: dark ? 0.4 : 0.05),
+        surfaceTintColor: Colors.transparent,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(radiusLarge),
-          side: BorderSide(color: dark ? PortfolioColors.borderDark : PortfolioColors.borderLight, width: 0.5),
+          side: BorderSide(
+            color: dark
+                ? PortfolioColors.accent.withValues(alpha: 0.2)
+                : PortfolioColors.accent.withValues(alpha: 0.25),
+            width: 0.5,
+          ),
         ),
       ),
       navigationBarTheme: NavigationBarThemeData(
-        backgroundColor: dark ? PortfolioColors.navBarDark : PortfolioColors.navBarLight,
+        backgroundColor: dark
+            ? PortfolioColors.navBarDark
+            : PortfolioColors.navBarLight,
         indicatorColor: PortfolioColors.accent.withValues(alpha: 0.15),
-        labelTextStyle: WidgetStateProperty.resolveWith((_) => TextStyle(
-          fontSize: 12,
-          fontWeight: FontWeight.w500,
-          color: dark ? PortfolioColors.textSecondaryDark : PortfolioColors.textSecondaryLight,
-        )),
+        labelTextStyle: WidgetStateProperty.resolveWith(
+          (_) => TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w500,
+            color: dark
+                ? PortfolioColors.textSecondaryDark
+                : PortfolioColors.textSecondaryLight,
+          ),
+        ),
       ),
     );
   }

@@ -10,7 +10,13 @@ class AppImageImpl extends StatefulWidget {
   final double? width;
   final double? height;
 
-  const AppImageImpl({super.key, required this.src, this.fit = BoxFit.contain, this.width, this.height});
+  const AppImageImpl({
+    super.key,
+    required this.src,
+    this.fit = BoxFit.contain,
+    this.width,
+    this.height,
+  });
 
   @override
   State<AppImageImpl> createState() => _AppImageImplState();
@@ -42,7 +48,10 @@ class _AppImageImplState extends State<AppImageImpl> {
       ..overflow = 'hidden';
     _div.append(_img);
     _viewType = 'web-image-${_counter++}';
-    ui_web.platformViewRegistry.registerViewFactory(_viewType, (int viewId) => _div);
+    ui_web.platformViewRegistry.registerViewFactory(
+      _viewType,
+      (int viewId) => _div,
+    );
   }
 
   @override
@@ -63,7 +72,8 @@ class _AppImageImplState extends State<AppImageImpl> {
         color: const Color(0xFF1A1A2E),
         child: const Center(
           child: SizedBox(
-            width: 20, height: 20,
+            width: 20,
+            height: 20,
             child: CircularProgressIndicator(strokeWidth: 2),
           ),
         ),

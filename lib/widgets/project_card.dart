@@ -28,100 +28,233 @@ class _ProjectCardState extends State<ProjectCard> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final techs = widget.project.tech
+        .split('|')
+        .map((t) => t.trim())
+        .where((t) => t.isNotEmpty)
+        .toList();
+
     return MouseRegion(
       onEnter: (_) => setState(() => _hover = true),
       onExit: (_) => setState(() => _hover = false),
       child: GestureDetector(
         onTap: _showDetails,
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 400),
-          transform: _hover ? Matrix4.translationValues(0, -6, 0) : Matrix4.identity(),
-          curve: Curves.easeOutCubic,
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 400),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(17),
-              gradient: _hover
-                  ? LinearGradient(
-                      colors: [
-                        PortfolioColors.accent.withValues(alpha: 0.4),
-                        PortfolioColors.accentLight.withValues(alpha: 0.15),
-                        PortfolioColors.accent.withValues(alpha: 0.25),
-                      ],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    )
-                  : null,
-            ),
-            padding: const EdgeInsets.all(1),
-            child: GlassCard(
-              glow: _hover,
-              padding: const EdgeInsets.all(24),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                        decoration: BoxDecoration(
-                          color: PortfolioColors.accent.withValues(alpha: 0.1),
-                          borderRadius: BorderRadius.circular(6),
-                        ),
-                        child: Text(
-                          widget.project.tech,
-                          style: TextStyle(fontSize: 11, color: PortfolioColors.accent, fontWeight: FontWeight.w500),
-                        ),
+          duration: const Duration(milliseconds: 200),
+          curve: Curves.easeOut,
+          transform: _hover
+              ? (Matrix4.translationValues(0, -3, 0)
+                  ..scaleByDouble(1.01, 1.01, 1.01, 1.0))
+              : Matrix4.identity(),
+          child: GlassCard(
+            emphasize: _hover,
+            padding: const EdgeInsets.all(24),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _GradientHeader(techs: techs, title: widget.project.title),
+                const SizedBox(height: 16),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Wrap(
+                        spacing: 6,
+                        runSpacing: 6,
+                        children: techs.map((t) => _TechTag(t)).toList(),
                       ),
-                      const Spacer(),
-                      if (widget.project.githubUrl != null)
-                        _IconBtn(Icons.code, 'GitHub', () => launchUrlExternal(widget.project.githubUrl!)),
-                      if (widget.project.liveUrl != null)
-                        _IconBtn(Icons.open_in_new, 'Live', () => launchUrlExternal(widget.project.liveUrl!)),
-                    ],
+                    ),
+                    if (widget.project.githubUrl != null)
+                      _IconBtn(
+                        Icons.code,
+                        'GitHub',
+                        () => launchUrlExternal(widget.project.githubUrl!),
+                      ),
+                    if (widget.project.liveUrl != null)
+                      _IconBtn(
+                        Icons.open_in_new,
+                        'Live',
+                        () => launchUrlExternal(widget.project.liveUrl!),
+                      ),
+                  ],
+                ),
+                const Spacer(),
+                const SizedBox(height: 16),
+                Text(
+                  widget.project.title,
+                  style: theme.textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.w600,
                   ),
-                  const Spacer(),
-                  Text(
-                    widget.project.title,
-                    style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    widget.project.points.join(' \u2022 '),
-                    style: theme.textTheme.bodySmall,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  const SizedBox(height: 16),
-                  Row(
-                    children: [
-                      AnimatedContainer(
-                        duration: const Duration(milliseconds: 300),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  widget.project.points.join(' \u2022 '),
+                  style: theme.textTheme.bodySmall,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                const SizedBox(height: 16),
+                Row(
+                  children: [
+                    Flexible(
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 200),
                         child: Row(
+                          mainAxisSize: MainAxisSize.min,
                           children: [
-                            Text(
-                              _hover ? 'View Details' : 'Explore Project',
-                              style: TextStyle(
-                                fontSize: 13,
-                                color: PortfolioColors.accent,
-                                fontWeight: FontWeight.w500,
+                            Flexible(
+                              child: Text(
+                                _hover ? 'View Details' : 'Explore Project',
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: const TextStyle(
+                                  fontSize: 13,
+                                  color: PortfolioColors.accent,
+                                  fontWeight: FontWeight.w600,
+                                ),
                               ),
                             ),
                             const SizedBox(width: 6),
-                            Icon(
-                              Icons.arrow_forward,
-                              size: 14,
-                              color: PortfolioColors.accent,
+                            AnimatedSlide(
+                              duration: const Duration(milliseconds: 200),
+                              curve: Curves.easeOut,
+                              offset: _hover ? const Offset(0.4, 0) : Offset.zero,
+                              child: const Icon(
+                                Icons.arrow_forward_rounded,
+                                size: 15,
+                                color: PortfolioColors.accent,
+                              ),
                             ),
                           ],
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _GradientHeader extends StatelessWidget {
+  final List<String> techs;
+  final String title;
+  const _GradientHeader({required this.techs, required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    final initials = title
+        .split(' ')
+        .where((w) => w.isNotEmpty)
+        .take(2)
+        .map((w) => w[0])
+        .join();
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(18),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            PortfolioColors.accent.withValues(alpha: 0.22),
+            PortfolioColors.accentLight.withValues(alpha: 0.1),
+            Colors.transparent,
+          ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: PortfolioColors.accent.withValues(alpha: 0.15),
+        ),
+      ),
+      child: Row(
+        children: [
+          Container(
+            width: 40,
+            height: 40,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: const [
+                  PortfolioColors.accent,
+                  PortfolioColors.accentLight,
                 ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Center(
+              child: Text(
+                initials,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
             ),
           ),
+          const SizedBox(width: 14),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'FEATURED PROJECT',
+                  style: TextStyle(
+                    fontSize: 10,
+                    letterSpacing: 2,
+                    fontWeight: FontWeight.w600,
+                    color: PortfolioColors.accent,
+                  ),
+                ),
+                const SizedBox(height: 3),
+                Text(
+                  techs.join(' \u2022 '),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Theme.of(context).textTheme.bodySmall?.color,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _TechTag extends StatelessWidget {
+  final String label;
+  const _TechTag(this.label);
+
+  @override
+  Widget build(BuildContext context) {
+    final dark = Theme.of(context).brightness == Brightness.dark;
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      decoration: BoxDecoration(
+        color: dark
+            ? PortfolioColors.accent.withValues(alpha: 0.14)
+            : PortfolioColors.accent.withValues(alpha: 0.08),
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+          color: PortfolioColors.accent.withValues(alpha: dark ? 0.35 : 0.25),
+        ),
+      ),
+      child: Text(
+        label,
+        style: TextStyle(
+          fontSize: 10,
+          color: PortfolioColors.accent,
+          fontWeight: FontWeight.w500,
         ),
       ),
     );
@@ -170,7 +303,11 @@ class _ProjectDetailSheet extends StatelessWidget {
                       width: 40,
                       height: 4,
                       decoration: BoxDecoration(
-                        color: (dark ? PortfolioColors.textTertiaryDark : PortfolioColors.textTertiaryLight).withValues(alpha: 0.3),
+                        color:
+                            (dark
+                                    ? PortfolioColors.textTertiaryDark
+                                    : PortfolioColors.textTertiaryLight)
+                                .withValues(alpha: 0.3),
                         borderRadius: BorderRadius.circular(2),
                       ),
                     ),
@@ -179,19 +316,35 @@ class _ProjectDetailSheet extends StatelessWidget {
                   Row(
                     children: [
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 5,
+                        ),
                         decoration: BoxDecoration(
                           color: PortfolioColors.accent.withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(6),
                         ),
-                        child: Text(project.tech, style: TextStyle(fontSize: 12, color: PortfolioColors.accent, fontWeight: FontWeight.w500)),
+                        child: Text(
+                          project.tech,
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: PortfolioColors.accent,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
                       ),
                       const Spacer(),
                       if (project.githubUrl != null)
-                        _ActionBtn(Icons.code, 'GitHub', () { Navigator.pop(context); launchUrlExternal(project.githubUrl!); }),
+                        _ActionBtn(Icons.code, 'GitHub', () {
+                          Navigator.pop(context);
+                          launchUrlExternal(project.githubUrl!);
+                        }),
                       if (project.liveUrl != null) ...[
                         const SizedBox(width: 8),
-                        _ActionBtn(Icons.open_in_new, 'Live Demo', () { Navigator.pop(context); launchUrlExternal(project.liveUrl!); }),
+                        _ActionBtn(Icons.open_in_new, 'Live Demo', () {
+                          Navigator.pop(context);
+                          launchUrlExternal(project.liveUrl!);
+                        }),
                       ],
                     ],
                   ),
@@ -203,14 +356,24 @@ class _ProjectDetailSheet extends StatelessWidget {
                 controller: scrollController,
                 padding: EdgeInsets.fromLTRB(24, 8, 24, bottom),
                 children: [
-                  Text(project.title, style: theme.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w600)),
+                  Text(
+                    project.title,
+                    style: theme.textTheme.headlineSmall?.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
                   const SizedBox(height: 24),
                   Row(
                     children: [
-                      Container(width: 3, height: 16,
+                      Container(
+                        width: 3,
+                        height: 16,
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
-                            colors: [PortfolioColors.accent, PortfolioColors.accentLight],
+                            colors: [
+                              PortfolioColors.accent,
+                              PortfolioColors.accentLight,
+                            ],
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
                           ),
@@ -218,34 +381,53 @@ class _ProjectDetailSheet extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(width: 10),
-                      Text('Key Highlights', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: PortfolioColors.accent)),
+                      Text(
+                        'Key Highlights',
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
+                          color: PortfolioColors.accent,
+                        ),
+                      ),
                     ],
                   ),
                   const SizedBox(height: 16),
-                  ...project.points.map((p) => Padding(
-                    padding: const EdgeInsets.only(bottom: 14),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(top: 5),
-                          width: 6, height: 6,
-                          decoration: BoxDecoration(
-                            color: PortfolioColors.accent,
-                            shape: BoxShape.circle,
-                            boxShadow: [
-                              BoxShadow(
-                                color: PortfolioColors.accent.withValues(alpha: 0.4),
-                                blurRadius: 4,
-                              ),
-                            ],
+                  ...project.points.map(
+                    (p) => Padding(
+                      padding: const EdgeInsets.only(bottom: 14),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(top: 5),
+                            width: 6,
+                            height: 6,
+                            decoration: BoxDecoration(
+                              color: PortfolioColors.accent,
+                              shape: BoxShape.circle,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: PortfolioColors.accent.withValues(
+                                    alpha: 0.4,
+                                  ),
+                                  blurRadius: 4,
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                        const SizedBox(width: 12),
-                        Expanded(child: Text(p, style: theme.textTheme.bodyMedium?.copyWith(height: 1.7))),
-                      ],
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: Text(
+                              p,
+                              style: theme.textTheme.bodyMedium?.copyWith(
+                                height: 1.7,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  )),
+                  ),
                 ],
               ),
             ),
@@ -264,20 +446,33 @@ class _ActionBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = Theme.of(context).brightness == Brightness.dark;
     return GestureDetector(
       onTap: onTap,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
         decoration: BoxDecoration(
-          color: PortfolioColors.accent.withValues(alpha: 0.1),
+          color: dark
+              ? PortfolioColors.accent.withValues(alpha: 0.12)
+              : PortfolioColors.accent.withValues(alpha: 0.08),
           borderRadius: BorderRadius.circular(8),
+          border: Border.all(
+            color: PortfolioColors.accent.withValues(alpha: dark ? 0.3 : 0.2),
+          ),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             Icon(icon, size: 14, color: PortfolioColors.accent),
             const SizedBox(width: 5),
-            Text(label, style: TextStyle(fontSize: 12, color: PortfolioColors.accent, fontWeight: FontWeight.w500)),
+            Text(
+              label,
+              style: TextStyle(
+                fontSize: 12,
+                color: PortfolioColors.accent,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
           ],
         ),
       ),
@@ -293,6 +488,7 @@ class _IconBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = Theme.of(context).brightness == Brightness.dark;
     return Padding(
       padding: const EdgeInsets.only(left: 8),
       child: GestureDetector(
@@ -300,8 +496,13 @@ class _IconBtn extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(6),
           decoration: BoxDecoration(
-            color: PortfolioColors.accent.withValues(alpha: 0.1),
+            color: dark
+                ? PortfolioColors.accent.withValues(alpha: 0.12)
+                : PortfolioColors.accent.withValues(alpha: 0.08),
             borderRadius: BorderRadius.circular(6),
+            border: Border.all(
+              color: PortfolioColors.accent.withValues(alpha: dark ? 0.3 : 0.2),
+            ),
           ),
           child: Icon(icon, size: 14, color: PortfolioColors.accent),
         ),

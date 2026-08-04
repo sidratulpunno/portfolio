@@ -16,25 +16,73 @@ class AboutSection extends StatelessWidget {
     final pad = AppTheme.paddingScreenWide(context);
 
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: pad.horizontal, vertical: AppTheme.sectionSpacing(context)),
+      padding: EdgeInsets.symmetric(
+        horizontal: pad.horizontal,
+        vertical: AppTheme.sectionSpacing(context),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           AnimatedSection(
-            child: Row(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(width: 5, height: 28,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [PortfolioColors.accent, PortfolioColors.accentLight],
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
+                Row(
+                  children: [
+                    Text(
+                      '01',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 1,
+                        color: PortfolioColors.accent,
+                        fontFeatures: const [FontFeature.tabularFigures()],
+                      ),
                     ),
-                    borderRadius: BorderRadius.circular(3),
-                  ),
+                    const SizedBox(width: 12),
+                    Container(
+                      width: 40,
+                      height: 2,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            PortfolioColors.accent,
+                            PortfolioColors.accentLight,
+                          ],
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                const SizedBox(width: 14),
-                Text('About', style: theme.textTheme.headlineMedium),
+                const SizedBox(height: 14),
+                Row(
+                  children: [
+                    Container(
+                      width: 5,
+                      height: 32,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            PortfolioColors.accent,
+                            PortfolioColors.accentLight,
+                          ],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                        ),
+                        borderRadius: BorderRadius.circular(3),
+                      ),
+                    ),
+                    const SizedBox(width: 14),
+                    Text(
+                      'About',
+                      style: theme.textTheme.headlineMedium?.copyWith(
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
@@ -63,15 +111,27 @@ class AboutSection extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(ResumeData.summary, style: theme.textTheme.bodyLarge?.copyWith(height: 1.8)),
+                  Text(
+                    ResumeData.summary,
+                    style: theme.textTheme.bodyLarge?.copyWith(height: 1.8),
+                  ),
                   const SizedBox(height: 32),
                   Wrap(
                     spacing: 12,
                     runSpacing: 12,
                     children: [
-                      _buildStat('Publications', ResumeData.publications.length.toString()),
-                      _buildStat('Projects', ResumeData.projects.length.toString()),
-                      _buildStat('Certifications', ResumeData.certifications.length.toString()),
+                      _buildStat(
+                        'Publications',
+                        ResumeData.publications.length.toString(),
+                      ),
+                      _buildStat(
+                        'Projects',
+                        ResumeData.projects.length.toString(),
+                      ),
+                      _buildStat(
+                        'Certifications',
+                        ResumeData.certifications.length.toString(),
+                      ),
                     ],
                   ),
                   const SizedBox(height: 32),
@@ -95,7 +155,12 @@ class AboutSection extends StatelessWidget {
                   spacing: 10,
                   runSpacing: 10,
                   children: ResumeData.interests
-                      .map((e) => SkillChip(label: e))
+                      .map(
+                        (e) => SkillChip(
+                          label: e,
+                          palette: PortfolioColors.paletteForInterest(e),
+                        ),
+                      )
                       .toList(),
                 ),
                 const SizedBox(height: 48),
@@ -120,13 +185,27 @@ class AboutSection extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(ResumeData.summary, style: theme.textTheme.bodyLarge?.copyWith(height: 1.8)),
+                Text(
+                  ResumeData.summary,
+                  style: theme.textTheme.bodyLarge?.copyWith(height: 1.8),
+                ),
                 const SizedBox(height: 24),
-                Wrap(spacing: 12, runSpacing: 12,
+                Wrap(
+                  spacing: 12,
+                  runSpacing: 12,
                   children: [
-                    _buildStat('Publications', ResumeData.publications.length.toString()),
-                    _buildStat('Projects', ResumeData.projects.length.toString()),
-                    _buildStat('Certifications', ResumeData.certifications.length.toString()),
+                    _buildStat(
+                      'Publications',
+                      ResumeData.publications.length.toString(),
+                    ),
+                    _buildStat(
+                      'Projects',
+                      ResumeData.projects.length.toString(),
+                    ),
+                    _buildStat(
+                      'Certifications',
+                      ResumeData.certifications.length.toString(),
+                    ),
                   ],
                 ),
                 const SizedBox(height: 24),
@@ -147,7 +226,12 @@ class AboutSection extends StatelessWidget {
                 spacing: 10,
                 runSpacing: 10,
                 children: ResumeData.interests
-                    .map((e) => SkillChip(label: e))
+                    .map(
+                      (e) => SkillChip(
+                        label: e,
+                        palette: PortfolioColors.paletteForInterest(e),
+                      ),
+                    )
                     .toList(),
               ),
             ],
@@ -179,13 +263,19 @@ class AboutSection extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(value, style: TextStyle(
-            fontSize: 18, fontWeight: FontWeight.w700, color: PortfolioColors.accent,
-          )),
+          Text(
+            value,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
+              color: PortfolioColors.accent,
+            ),
+          ),
           const SizedBox(width: 6),
-          Text(label, style: TextStyle(
-            fontSize: 13, color: PortfolioColors.accent,
-          )),
+          Text(
+            label,
+            style: TextStyle(fontSize: 13, color: PortfolioColors.accent),
+          ),
         ],
       ),
     );
@@ -211,7 +301,14 @@ class AboutSection extends StatelessWidget {
             children: [
               Icon(Icons.download, size: 16, color: Colors.white),
               const SizedBox(width: 8),
-              Text('Download Resume', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 14)),
+              Text(
+                'Download Resume',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 14,
+                ),
+              ),
             ],
           ),
         ),
@@ -233,28 +330,61 @@ class _EducationTile extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Column(children: [
-            Container(width: 8, height: 8,
-              decoration: const BoxDecoration(shape: BoxShape.circle, color: PortfolioColors.accent),
-            ),
-            Container(width: 1.5, height: 40,
-              color: dark ? PortfolioColors.borderDark.withValues(alpha: 0.3) : PortfolioColors.borderLight.withValues(alpha: 0.3),
-            ),
-          ]),
+          Column(
+            children: [
+              Container(
+                width: 8,
+                height: 8,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: PortfolioColors.accent,
+                ),
+              ),
+              Container(
+                width: 1.5,
+                height: 40,
+                color: dark
+                    ? PortfolioColors.borderDark.withValues(alpha: 0.3)
+                    : PortfolioColors.borderLight.withValues(alpha: 0.3),
+              ),
+            ],
+          ),
           const SizedBox(width: 14),
-          Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text(edu.year, style: TextStyle(fontSize: 12, color: PortfolioColors.accent, fontWeight: FontWeight.w600)),
-            const SizedBox(height: 4),
-            Text(edu.title, style: TextStyle(fontSize: 15, color: theme.textTheme.titleMedium?.color, fontWeight: FontWeight.w500)),
-            if (edu.institution.isNotEmpty) ...[
-              const SizedBox(height: 2),
-              Text(edu.institution, style: theme.textTheme.bodySmall),
-            ],
-            if (edu.detail.isNotEmpty) ...[
-              const SizedBox(height: 2),
-              Text(edu.detail, style: theme.textTheme.bodySmall?.copyWith(fontSize: 12)),
-            ],
-          ])),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  edu.year,
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: PortfolioColors.accent,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  edu.title,
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: theme.textTheme.titleMedium?.color,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                if (edu.institution.isNotEmpty) ...[
+                  const SizedBox(height: 2),
+                  Text(edu.institution, style: theme.textTheme.bodySmall),
+                ],
+                if (edu.detail.isNotEmpty) ...[
+                  const SizedBox(height: 2),
+                  Text(
+                    edu.detail,
+                    style: theme.textTheme.bodySmall?.copyWith(fontSize: 12),
+                  ),
+                ],
+              ],
+            ),
+          ),
         ],
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../theme/colors.dart';
 import '../../../theme/app_theme.dart';
 import '../../../data/resume_data.dart';
 import '../../../widgets/animated_section.dart';
@@ -14,8 +15,13 @@ class CertificationsSection extends StatelessWidget {
     final cols = AppTheme.gridColumns(context);
 
     return Container(
-      color: Theme.of(context).brightness == Brightness.dark ? null : null,
-      padding: EdgeInsets.symmetric(horizontal: pad.horizontal, vertical: AppTheme.sectionSpacing(context)),
+      color: Theme.of(context).brightness == Brightness.dark
+          ? PortfolioColors.sectionAltDark
+          : PortfolioColors.sectionAltLight,
+      padding: EdgeInsets.symmetric(
+        horizontal: pad.horizontal,
+        vertical: AppTheme.sectionSpacing(context),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -23,6 +29,7 @@ class CertificationsSection extends StatelessWidget {
             child: const SectionHeader(
               title: 'Certifications',
               subtitle: 'Professional certifications and credentials',
+              index: '06',
             ),
           ),
           const SizedBox(height: 32),
@@ -53,6 +60,7 @@ class CertificationsSection extends StatelessWidget {
               child: const SectionHeader(
                 title: 'Badges',
                 subtitle: 'Digital credentials and micro-certifications',
+                index: '07',
               ),
             ),
             const SizedBox(height: 32),
