@@ -1,0 +1,56 @@
+# Sheikh Sidratul Muntaha Punno — Portfolio (for LLMs / AI crawlers)
+# URL: https://sidratulpunno.github.io/
+# Contact: sheikhpunno400@gmail.com | GitHub: @sidratulpunno | LinkedIn: sidratul-punno-51a0832b6
+
+> HPC & AI Engineer. B.Sc. IoT & Robotics Engineering, University of Frontier Technology Bangladesh (2023-2026, CGPA 3.84/4.00).
+> Specializes in CUDA, NVIDIA RAPIDS (cuML, cuDF), GPU-accelerated ML, LLM fine-tuning (LoRA, RoBERTa, Gemma), Flutter, IoT (ESP32).
+
+## Summary
+Engineering student specializing in High Performance Computing (HPC) and GPU accelerated Machine Learning using CUDA, cuML, and cuDF. Experienced in designing scalable ML pipelines, parallel computing workflows, and performance-optimized GPU systems. Also proficient in building production-grade Flutter applications integrated with AI services.
+
+## Research interests
+- High-Performance Computing
+- GPU-Accelerated Machine Learning
+- Parallel Algorithms
+- LLM Steering & Fine Tuning
+- Assistive & Human-Centered AI
+- AI-Enabled Mobile Systems
+
+## Education
+- 2023-2026: B.Sc. IoT & Robotics Engineering, University of Frontier Technology Bangladesh — CGPA 3.84/4.00
+- 2021: HSC — GPA 5.0/5.0
+- 2018: SSC — GPA 5.0/5.0
+
+## Publications
+1. Jan 2026 — "Transformer-Based Models for Student Mental Health Detection: A Comparative Study of BERT, RoBERTa and Gemma" — IEEE ICECTE 2026, Rajshahi
+2. Apr 2026 — "AgriMind: An IoT-Driven LLM Framework for Intelligent Precision Agriculture" — IEEE QPAIN 2026, Chittagong
+3. Jun 2026 — "IoT-Based Smart Homes: Technologies, Security Risks and Countermeasures" — IJIEEB Vol. 18 No. 3
+
+## Skills
+- HPC & GPU: CUDA C/C++, NVIDIA RAPIDS, cuML, cuDF, Nsight Compute
+- AI/ML: Deep Learning, LoRA, LLM Fine Tuning, Computer Vision, RoBERTa
+- Mobile: Flutter, Firebase, TFLite
+- Languages: Python, CUDA C/C++, Dart, C, C++, Rust
+- Backend & IoT: FastAPI, Flask, Arduino, ESP32, Raspberry Pi
+- Tools: Git, Docker, Linux, Azure, Altium
+
+## Projects
+1. GPU-Accelerated ML Pipeline (CUDA|cuML|cuDF): RAPIDS pipelines, cuDF preprocessing, multi-fold speedups vs CPU
+2. Smart Navigation Assistant (AI|Flutter|CV): assistive navigation with LLM, object detection, distance estimation, TTS
+3. Mental Health Detection (NLP|RoBERTa|Gemma): transformer text classification, CLI inference
+4. Video Conferencing App (Flutter|Firebase|Jitsi): Jitsi SDK, Firebase auth, chat, meeting management
+5. Smart Door Lock System (IoT|ESP32): cloud-connected security, remote monitoring, access control
+
+## Achievements
+- 2023-2025: Dean's Award, 3 consecutive years
+- 2017: President's Scout Award (President of Bangladesh)
+- 2018: Community Development Award (Ministry level)
+- 2012: Junior Scholarship
+
+## Certifications (verifiable)
+C++, ML A-Z, Ethical Hacking, Flutter & Dart Complete Guide, DevOps with Projects, Java, PCB Design, Go Complete Guide, Flutter BLoC, DevOps CI/CD, Electronics Lab Setup, AI Fluency, Claude 101 (Udemy/SkillJar). Badges: MongoDB Vector Search, RAG Apps (Credly).
+
+## Links
+- Resume: https://drive.google.com/file/d/1nR40C2p7q3Zfxd9ihVOl7iD_vItlwAI3/view
+- Source: https://github.com/sidratulpunno/portfolio
+- Phone: +8801941529696

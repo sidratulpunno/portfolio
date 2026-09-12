@@ -1,0 +1,9 @@
+/* TEAM */
+Developer: Sheikh Sidratul Muntaha Punno
+Contact: sheikhpunno400@gmail.com
+GitHub: https://github.com/sidratulpunno
+
+/* SITE */
+Stack: semantic HTML + CSS + vanilla JS (no framework)
+Host: GitHub Pages
+

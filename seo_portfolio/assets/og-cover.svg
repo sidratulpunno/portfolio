@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" role="img" aria-label="Sheikh Sidratul Muntaha Punno — HPC and AI Engineer">
+  <rect width="1200" height="630" fill="#0E1510"/>
+  <circle cx="200" cy="180" r="180" fill="#1B5E20" opacity="0.35"/>
+  <circle cx="1020" cy="480" r="200" fill="#66BB6A" opacity="0.25"/>
+  <text x="80" y="270" font-family="system-ui, Arial, sans-serif" font-size="72" font-weight="800" fill="#FFFFFF">Sheikh Sidratul</text>
+  <text x="80" y="350" font-family="system-ui, Arial, sans-serif" font-size="72" font-weight="800" fill="#FFFFFF">Muntaha Punno</text>
+  <text x="80" y="410" font-family="system-ui, Arial, sans-serif" font-size="30" letter-spacing="4" fill="#A5D6A7">HPC &amp; AI ENGINEER — CUDA • RAPIDS • FLUTTER</text>
+  <text x="80" y="460" font-family="system-ui, Arial, sans-serif" font-size="24" fill="#E8F5E9">3 Publications • 5 Projects • IEEE Research</text>
+</svg>
