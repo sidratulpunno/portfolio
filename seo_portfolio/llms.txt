@@ -1,5 +1,5 @@
 # Sheikh Sidratul Muntaha Punno — Portfolio (for LLMs / AI crawlers)
-# URL: https://sidratulpunno.github.io/
+# URL: https://sidratulpunno.github.io/portfolio/
 # Contact: sheikhpunno400@gmail.com | GitHub: @sidratulpunno | LinkedIn: sidratul-punno-51a0832b6
 
 > HPC & AI Engineer. B.Sc. IoT & Robotics Engineering, University of Frontier Technology Bangladesh (2023-2026, CGPA 3.84/4.00).

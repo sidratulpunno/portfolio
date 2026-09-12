@@ -20,4 +20,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://sidratulpunno.github.io/sitemap.xml
+Sitemap: https://sidratulpunno.github.io/portfolio/sitemap.xml
