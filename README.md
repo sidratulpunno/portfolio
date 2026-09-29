@@ -18,7 +18,7 @@ This version is:
 
 ## Contents (mirrors Flutter app 1:1 + CV)
 
-About (Professional Summary + Languages), Skills (11 categories per CV), Publications (3, full IEEE venues), Projects (5 per CV: GPU pipeline, 2× quantum/security, assistive nav, mental health), Achievements (4) + Languages + Extra-Curricular (Scout, Photography), Certifications (11) + Badges (2), Contact. Same text as `lib/data/resume_data.dart`.
+About (Professional Summary + Languages), Skills (11 categories per CV), Publications (3, full IEEE venues), Projects (5 per CV: GPU pipeline, 2× quantum/security, assistive nav, mental health), Achievements (4) + Languages + Extra-Curricular (Scout, Photography), Certifications (14) + Badges (2), Contact. Same text as `lib/data/resume_data.dart`.
 
 ## Deploy to GitHub Pages (2 options)
 
