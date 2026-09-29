@@ -179,8 +179,11 @@ class ResumeData {
     Certification('PCB Design: From Idea to Product', 'https://ude.my/UC-9df4d3f1-2eeb-4245-a158-8884d6ff4f73', 'https://udemy-certificate.s3.amazonaws.com/image/UC-9df4d3f1-2eeb-4245-a158-8884d6ff4f73.jpg'),
     Certification('Go - The Complete Guide', 'https://ude.my/UC-560066ed-eb42-4323-b4c6-0dc4f42e23f3', 'https://udemy-certificate.s3.amazonaws.com/image/UC-560066ed-eb42-4323-b4c6-0dc4f42e23f3.jpg'),
     Certification('Flutter BLoC - Zero to Hero', 'https://ude.my/UC-d6cc5e44-2608-4cc7-9596-81d6c3d91305', 'https://udemy-certificate.s3.amazonaws.com/image/UC-d6cc5e44-2608-4cc7-9596-81d6c3d91305.jpg'),
-    Certification('DevOps, CI/CD (Continuous Integration/Delivery) for Beginners', 'https://ude.my/UC-5a2f1bbf-d4d8-4b75-a1d2-6b4d79ba800e', 'https://udemy-certificate.s3.amazonaws.com/image/UC-5a2f1bbf-d4d8-4b75-a1d2-6b4d79ba800e.jpg'),
+    Certification('Learning Complete PCB Design: From an Idea to a Product', 'https://ude.my/UC-9df4d3f1-2eeb-4245-a158-8884d6ff4f73', 'https://udemy-certificate.s3.amazonaws.com/image/UC-9df4d3f1-2eeb-4245-a158-8884d6ff4f73.jpg'),
+    Certification('DevOps, CI/CD(Continuous Integration/DeIivery) for Beginners', 'https://ude.my/UC-5a2f1bbf-d4d8-4b75-a1d2-6b4d79ba800e', 'https://udemy-certificate.s3.amazonaws.com/image/UC-5a2f1bbf-d4d8-4b75-a1d2-6b4d79ba800e.jpg'),
     Certification('How to Set Up an Electronics Lab: Tools & Equipments', 'https://ude.my/UC-0f1e3b5a-f474-48b2-8d9c-35c0511820dd', 'https://udemy-certificate.s3.amazonaws.com/image/UC-0f1e3b5a-f474-48b2-8d9c-35c0511820dd.jpg'),
+    Certification('AI Fluency: Framework & Foundations', 'https://verify.skilljar.com/c/m3t6rum2y2px', 'https://i.imgur.com/PdDnZZ1.jpeg'),
+    Certification('Claude 101', 'https://verify.skilljar.com/c/wfmycoovhkd6', 'https://i.imgur.com/TcxFrKG.jpeg'),
   ];
 
   static const badges = [

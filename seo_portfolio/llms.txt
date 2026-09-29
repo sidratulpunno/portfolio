@@ -59,8 +59,8 @@ B.Sc. in IoT & Robotics. Specialized in HPC and GPU-accelerated ML using CUDA, c
 - Scout Member (Senior Patrol Leader): leadership, team coordination, community service
 - Photography: event/nature/creative; executive committee, school photography club
 
-## Certifications (verifiable, Udemy)
-C++ Deep Dive, ML A-Z, Ethical Hacking, Flutter & Dart Complete Guide, DevOps with Projects, Java Master, PCB Design, Go Complete Guide, Flutter BLoC Zero to Hero, DevOps CI/CD Beginners, Electronics Lab Setup. Badges: MongoDB Vector Search, RAG Apps (Credly).
+## Certifications (verifiable)
+C++, ML A-Z, Ethical Hacking, Flutter & Dart Complete Guide, DevOps with Projects, Java, PCB Design, Go Complete Guide, Flutter BLoC, DevOps CI/CD, Electronics Lab Setup, AI Fluency, Claude 101 (Udemy/SkillJar). Badges: MongoDB Vector Search, RAG Apps (Credly).
 
 ## Links
 - Resume: https://drive.google.com/file/d/1nR40C2p7q3Zfxd9ihVOl7iD_vItlwAI3/view
