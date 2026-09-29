@@ -2,44 +2,52 @@
 # URL: https://sidratulpunno.github.io/portfolio/
 # Contact: sheikhpunno400@gmail.com | GitHub: @sidratulpunno | LinkedIn: sidratul-punno-51a0832b6
 
-> HPC & AI Engineer. B.Sc. IoT & Robotics Engineering, University of Frontier Technology Bangladesh (2023-2026, CGPA 3.84/4.00).
-> Specializes in CUDA, NVIDIA RAPIDS (cuML, cuDF), GPU-accelerated ML, LLM fine-tuning (LoRA, RoBERTa, Gemma), Flutter, IoT (ESP32).
+> B.Sc. IoT & Robotics Engineering, University of Frontier Technology Bangladesh (2023-2026, CGPA 3.87/4.00).
+> Specialized in HPC and GPU-accelerated ML (CUDA, cuML, cuDF). Research: quantum-inspired and classical ML for IoT and network security. Also Flutter AI apps.
 
-## Summary
-Engineering student specializing in High Performance Computing (HPC) and GPU accelerated Machine Learning using CUDA, cuML, and cuDF. Experienced in designing scalable ML pipelines, parallel computing workflows, and performance-optimized GPU systems. Also proficient in building production-grade Flutter applications integrated with AI services.
+## Professional Summary
+B.Sc. in IoT & Robotics. Specialized in HPC and GPU-accelerated ML using CUDA, cuML, and cuDF. Experienced in scalable ML pipelines, parallel computing, and performance-optimized GPU systems. Research focuses on quantum-inspired and classical ML for IoT and network security. Also builds production-grade Flutter applications with AI services. Targeting opportunities in HPC, GPU computing, and AI-driven systems.
 
 ## Research interests
 - High-Performance Computing
 - GPU-Accelerated Machine Learning
 - Parallel Algorithms
-- LLM Steering & Fine Tuning
+- LLM steering & Fine Tuning
 - Assistive & Human-Centered AI
 - AI-Enabled Mobile Systems
 
 ## Education
-- 2023-2026: B.Sc. IoT & Robotics Engineering, University of Frontier Technology Bangladesh — CGPA 3.84/4.00
-- 2021: HSC — GPA 5.0/5.0
-- 2018: SSC — GPA 5.0/5.0
+- 2023-2026: B.Sc. IoT & Robotics Engineering, University of Frontier Technology Bangladesh — CGPA 3.87/4.00
+- 2021: Higher Secondary School Certificate (HSC) — GPA 5.0/5.0
+- 2018: Secondary School Certificate (SSC) — GPA 5.0/5.0
 
 ## Publications
-1. Jan 2026 — "Transformer-Based Models for Student Mental Health Detection: A Comparative Study of BERT, RoBERTa and Gemma" — IEEE ICECTE 2026, Rajshahi
-2. Apr 2026 — "AgriMind: An IoT-Driven LLM Framework for Intelligent Precision Agriculture" — IEEE QPAIN 2026, Chittagong
-3. Jun 2026 — "IoT-Based Smart Homes: Technologies, Security Risks and Countermeasures" — IJIEEB Vol. 18 No. 3
+1. Jan 2026 — "Transformer-Based Models for Student Mental Health Detection: A Comparative Study of BERT, RoBERTa and Gemma" — 2026 IEEE International Conference on Electrical, Computer & Telecommunication Engineering (ICECTE 2026), Rajshahi, Bangladesh
+2. Apr 2026 — "AgriMind: An IoT-Driven LLM Framework for Intelligent Precision Agriculture" — 2026 IEEE 2nd International Conference on Quantum Photonics, Artificial Intelligence, and Networking (QPAIN), Chittagong, Bangladesh
+3. Jun 2026 — "IoT-Based Smart Homes: Technologies, Security Risks and Countermeasures" — International Journal of Information Engineering and Electronic Business (IJIEEB) Vol. 18, No. 3
 
-## Skills
-- HPC & GPU: CUDA C/C++, NVIDIA RAPIDS, cuML, cuDF, Nsight Compute
-- AI/ML: Deep Learning, LoRA, LLM Fine Tuning, Computer Vision, RoBERTa
-- Mobile: Flutter, Firebase, TFLite
-- Languages: Python, CUDA C/C++, Dart, C, C++, Rust
-- Backend & IoT: FastAPI, Flask, Arduino, ESP32, Raspberry Pi
-- Tools: Git, Docker, Linux, Azure, Altium
+## Technical Skills
+- HPC & GPU Computing: CUDA (C/C++), NVIDIA RAPIDS (cuML, cuDF), GPU-accelerated pipelines, parallel computing, performance optimization, Nsight Compute, nvidia-smi
+- AI & Machine Learning: Deep Learning, LoRA, LLM fine tuning, Computer Vision, Generative AI (Gemini / Nano Banana), RoBERTa, GPU workflows
+- Mobile Development: Flutter (Android, Web), Firebase (Auth, Firestore, FCM), Google Sign-In, TTS integration, TFLite
+- Backend Development: Python (FastAPI, Flask)
+- Languages: Python, CUDA C/C++, Dart, C, Java, C++, Bash, Rust
+- IoT Platform: Arduino, Raspberry Pi, ESP8266, ESP32
+- PCB Design: Altium Designer
+- Operating System: Windows, Linux
+- Typesetting: LaTeX
+- Database: MySQL, MongoDB
+- Tools & Platforms: Burp Suite, Git, GitHub, Google Drive API, Jitsi Meet SDK, Azure Cloud
 
 ## Projects
-1. GPU-Accelerated ML Pipeline (CUDA|cuML|cuDF): RAPIDS pipelines, cuDF preprocessing, multi-fold speedups vs CPU
-2. Smart Navigation Assistant (AI|Flutter|CV): assistive navigation with LLM, object detection, distance estimation, TTS
-3. Mental Health Detection (NLP|RoBERTa|Gemma): transformer text classification, CLI inference
-4. Video Conferencing App (Flutter|Firebase|Jitsi): Jitsi SDK, Firebase auth, chat, meeting management
-5. Smart Door Lock System (IoT|ESP32): cloud-connected security, remote monitoring, access control
+1. GPU-Accelerated ML Pipeline (HPC|CUDA|cuML|cuDF): RAPIDS pipelines (cuDF preprocessing, cuML training), multi-fold speedups over CPU
+2. Quantum ML for Network Security (Quantum ML|Network Security|Python): quantum kernels for one-class intrusion detection on CICIoT2023/UNSW-NB15; PSO-tuned RFF surrogate vs exact fidelity kernel; no advantage over RBF SVM
+3. Quantum-Inspired Decentralized IoT Anomaly Detection (IoT Security|Anomaly Detection|Swarm): fidelity-density detector + swarm peer corroboration; ROC-AUC 0.9706/0.8758; 50-node NS-3 (3-of-3 delivery, 10.8424 ms latency)
+4. Smart Navigation Assistant for Visually Impaired (AI|Flutter): real-time assistive navigation with LLM, CV object detection, distance estimation, TTS guidance
+5. Student Mental Health Detection System (ML|NLP): RoBERTa & Gemma transformer for sentiment analysis + CLI inference tool
+
+## Languages
+- English (Professional Working Proficiency), Bangla (Native)
 
 ## Achievements
 - 2023-2025: Dean's Award, 3 consecutive years
@@ -47,8 +55,12 @@ Engineering student specializing in High Performance Computing (HPC) and GPU acc
 - 2018: Community Development Award (Ministry level)
 - 2012: Junior Scholarship
 
-## Certifications (verifiable)
-C++, ML A-Z, Ethical Hacking, Flutter & Dart Complete Guide, DevOps with Projects, Java, PCB Design, Go Complete Guide, Flutter BLoC, DevOps CI/CD, Electronics Lab Setup, AI Fluency, Claude 101 (Udemy/SkillJar). Badges: MongoDB Vector Search, RAG Apps (Credly).
+## Extra-Curricular
+- Scout Member (Senior Patrol Leader): leadership, team coordination, community service
+- Photography: event/nature/creative; executive committee, school photography club
+
+## Certifications (verifiable, Udemy)
+C++ Deep Dive, ML A-Z, Ethical Hacking, Flutter & Dart Complete Guide, DevOps with Projects, Java Master, PCB Design, Go Complete Guide, Flutter BLoC Zero to Hero, DevOps CI/CD Beginners, Electronics Lab Setup. Badges: MongoDB Vector Search, RAG Apps (Credly).
 
 ## Links
 - Resume: https://drive.google.com/file/d/1nR40C2p7q3Zfxd9ihVOl7iD_vItlwAI3/view

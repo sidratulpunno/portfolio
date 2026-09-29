@@ -98,77 +98,71 @@
   var y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 
-  // Project details modal
+  // Project details modal — mirrors CV
   var PROJECTS = {
     'gpu-pipeline': {
-      tech: 'CUDA | cuML | cuDF',
+      tech: 'HPC | CUDA | cuML | cuDF',
       title: 'GPU-Accelerated ML Pipeline',
-      tag: 'GPU computing · Machine learning systems',
-      overview: 'End-to-end machine learning pipeline built on the NVIDIA RAPIDS ecosystem. Raw tabular data is ingested and cleaned on the GPU with cuDF, then models are trained with cuML — keeping data on-device to avoid costly CPU-GPU transfers. The result is multi-fold faster iteration than equivalent CPU workflows, making large-scale experimentation practical on a single GPU workstation.',
+      tag: 'HPC · GPU computing',
+      overview: 'GPU-accelerated ML pipelines using NVIDIA RAPIDS (cuDF for preprocessing, cuML for training), achieving multi-fold speedups over CPU workflows. Keeps data on-device to avoid CPU-GPU transfer overhead.',
       points: [
-        'GPU-accelerated ML pipelines using the NVIDIA RAPIDS ecosystem',
-        'cuDF for large-scale GPU data preprocessing',
-        'cuML estimators for on-device model training',
-        'Benchmarked against CPU baselines to quantify speedups'
+        'Built GPU-accelerated ML pipelines using NVIDIA RAPIDS (cuDF for preprocessing, cuML for training)',
+        'Multi-fold speedups over CPU workflows'
       ],
-      stack: ['CUDA', 'Python', 'RAPIDS', 'cuML', 'cuDF', 'Nsight Compute'],
-      outcome: 'Outcome: much faster training iterations and a reusable template for GPU-first ML work.'
+      stack: ['CUDA', 'Python', 'RAPIDS', 'cuML', 'cuDF', 'Nsight Compute', 'nvidia-smi'],
+      outcome: 'Outcome: reusable template for GPU-first ML work.'
+    },
+    'quantum-ml': {
+      tech: 'Quantum ML | Network Security | Python',
+      title: 'Quantum ML for Network Security',
+      tag: 'Quantum ML · Intrusion detection',
+      overview: 'Evaluated parameterized quantum kernels for one-class intrusion detection on CICIoT2023 and UNSW-NB15 under an equalized protocol; implemented a PSO-tuned RFF surrogate validated against the exact fidelity kernel.',
+      points: [
+        'Parameterized quantum kernels for one-class intrusion detection on CICIoT2023 and UNSW-NB15',
+        'PSO-tuned RFF surrogate validated against the exact fidelity kernel',
+        'No detection advantage over classical RBF one-class SVM, with explicit fidelity analysis'
+      ],
+      stack: ['Python', 'Quantum kernels', 'RFF', 'PSO', 'CICIoT2023', 'UNSW-NB15'],
+      outcome: 'Outcome: rigorous negative result with surrogate-to-exact kernel fidelity analysis.'
+    },
+    'quantum-iot': {
+      tech: 'IoT Security | Anomaly Detection | Swarm Collaboration',
+      title: 'Quantum-Inspired Decentralized IoT Anomaly Detection',
+      tag: 'IoT security · Decentralized detection',
+      overview: 'Decentralized anomaly-detection framework combining a benign-reference fidelity-density detector with swarm-inspired peer corroboration. Evaluated on CICIoT2023 and X-IIoTID (ROC-AUC 0.9706, 0.8758) and validated in a 50-node NS-3 simulation (3-of-3 delivery, 10.8424 ms latency).',
+      points: [
+        'Benign-reference fidelity-density detector with swarm-inspired peer corroboration',
+        'ROC-AUC 0.9706 (CICIoT2023) and 0.8758 (X-IIoTID)',
+        '50-node NS-3 validation: 3-of-3 delivery, 10.8424 ms latency'
+      ],
+      stack: ['Python', 'IoT Security', 'Anomaly Detection', 'NS-3', 'CICIoT2023', 'X-IIoTID'],
+      outcome: 'Outcome: decentralized detector with peer-verified validation at scale.'
     },
     'smart-nav': {
-      tech: 'AI | Flutter | CV',
-      title: 'Smart Navigation Assistant',
+      tech: 'AI | Flutter',
+      title: 'Smart Navigation Assistant for Visually Impaired',
       tag: 'Assistive AI · Mobile',
-      overview: 'Flutter mobile app that narrates the world for visually impaired users. The camera feed runs on-device object detection with distance estimation, while a language model turns observations into clear spoken guidance via text-to-speech. Everything is tuned for real-world walking: short, calm instructions instead of raw detections.',
+      overview: 'AI-powered Flutter app for real-time assistive navigation using an LLM, with computer vision for object detection, distance estimation, and TTS-based guidance.',
       points: [
         'Real-time assistive navigation with LLM-based scene narration',
         'Object detection plus distance estimation from the camera feed',
-        'TTS guidance tuned for clarity at walking pace',
-        'On-device perception to keep latency low'
+        'TTS-based guidance'
       ],
-      stack: ['Flutter', 'Dart', 'TFLite', 'LLM APIs', 'Computer Vision', 'Firebase'],
-      outcome: 'Outcome: a working assistive-navigation prototype pairing mobile vision with language-model reasoning.'
+      stack: ['Flutter', 'Dart', 'LLM APIs', 'Computer Vision', 'TTS', 'Firebase'],
+      outcome: 'Outcome: working assistive-navigation prototype pairing mobile vision with language-model reasoning.'
     },
     'mental-health': {
-      tech: 'NLP | RoBERTa | Gemma',
-      title: 'Mental Health Detection',
+      tech: 'ML | NLP',
+      title: 'Student Mental Health Detection System',
       tag: 'NLP · Transformers',
-      overview: 'Comparative study of transformer models — BERT, RoBERTa and Gemma — for detecting signs of student mental-health distress in text. Includes training and evaluation harnesses plus a lightweight CLI for quick inference and testing. This work feeds the IEEE ICECTE 2026 publication.',
+      overview: 'RoBERTa and Gemma based Transformer for mental health sentiment analysis and a CLI-based inference tool for evaluation. Feeds the IEEE ICECTE 2026 publication (BERT/RoBERTa/Gemma comparison).',
       points: [
-        'Head-to-head comparison of BERT, RoBERTa and Gemma',
-        'Transformer classifier for mental-health text signals',
-        'CLI-based inference for streamlined testing and demos',
-        'Reproducible evaluation splits'
+        'RoBERTa and Gemma transformer for mental-health text classification',
+        'CLI-based inference tool for evaluation',
+        'Comparative study of BERT, RoBERTa and Gemma'
       ],
       stack: ['Python', 'PyTorch', 'RoBERTa', 'Gemma', 'Hugging Face'],
-      outcome: 'Outcome: peer-reviewed IEEE publication with an evaluation setup others can rerun.'
-    },
-    'video-conf': {
-      tech: 'Flutter | Firebase | Jitsi',
-      title: 'Video Conferencing App',
-      tag: 'Mobile · Realtime',
-      overview: 'Full-featured video conferencing app built with Flutter and the Jitsi Meet SDK. Firebase handles authentication and presence, while real-time chat and meeting management — room creation, invites, call history — round out a complete meeting experience from one codebase.',
-      points: [
-        'Real-time video conferencing with the Jitsi Meet SDK',
-        'Firebase auth, presence and real-time chat',
-        'Room creation, invites and meeting history',
-        'One codebase running on Android and iOS'
-      ],
-      stack: ['Flutter', 'Dart', 'Jitsi Meet SDK', 'Firebase Auth', 'Firestore'],
-      outcome: 'Outcome: a production-style realtime app covering auth, media, chat and state.'
-    },
-    'door-lock': {
-      tech: 'IoT | ESP32',
-      title: 'Smart Door Lock System',
-      tag: 'IoT · Embedded',
-      overview: 'Cloud-connected smart door lock built around the ESP32. Access events are reported to the cloud for remote monitoring, and authorized users can lock or unlock from their phone under secure access control. The firmware is written for reliability: reconnect logic, debounced inputs and fail-safe defaults.',
-      points: [
-        'Cloud-connected security system on the ESP32',
-        'Phone-controlled lock and unlock with access rules',
-        'Remote monitoring of access events',
-        'Resilient firmware with auto-reconnect'
-      ],
-      stack: ['ESP32', 'C++', 'Arduino', 'Cloud / MQTT', 'Flutter'],
-      outcome: 'Outcome: a dependable IoT security device bridging embedded firmware and mobile control.'
+      outcome: 'Outcome: peer-reviewed IEEE publication with reusable evaluation setup.'
     }
   };
   var modal = document.getElementById('projModal');

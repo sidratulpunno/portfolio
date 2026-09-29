@@ -82,7 +82,10 @@ class PortfolioColors {
     if (c.contains('language')) {
       return blue;
     }
-    if (c.contains('backend') || c.contains('iot')) {
+    if (c.contains('backend') ||
+        c.contains('iot') ||
+        c.contains('database') ||
+        c.contains('pcb')) {
       return cyan;
     }
     return slate;

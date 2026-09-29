@@ -50,6 +50,45 @@ class AchievementsSection extends StatelessWidget {
               );
             },
           ),
+          const SizedBox(height: 32),
+          AnimatedSection(
+            child: Text(
+              'Languages',
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+          ),
+          const SizedBox(height: 16),
+          AnimatedSection(
+            delayMs: 100,
+            child: _AchievementCard(
+              year: 'Languages',
+              title: ResumeData.languages.join('  •  '),
+              icon: Icons.translate,
+            ),
+          ),
+          const SizedBox(height: 32),
+          AnimatedSection(
+            child: Text(
+              'Extra-Curricular Activities',
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+          ),
+          const SizedBox(height: 16),
+          ...ResumeData.extracurriculars.asMap().entries.map(
+            (entry) => Padding(
+              padding: const EdgeInsets.only(bottom: 16),
+              child: AnimatedSection(
+                delayMs: entry.key * 100,
+                child: _AchievementCard(
+                  year: entry.key == 0 ? 'Scouting' : 'Photography',
+                  title: entry.value,
+                  icon: entry.key == 0
+                      ? Icons.groups
+                      : Icons.photo_camera_outlined,
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );

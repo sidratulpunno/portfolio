@@ -12,38 +12,38 @@ class ResumeData {
   static const portfolioRepo = 'https://github.com/sidratulpunno/portfolio';
   static const resumeUrl = 'https://drive.google.com/file/d/1nR40C2p7q3Zfxd9ihVOl7iD_vItlwAI3/view';
 
-  static const summary = 'Engineering student specializing in High Performance Computing (HPC) '
-      'and GPU accelerated Machine Learning using CUDA, cuML, and cuDF. '
-      'Experienced in designing scalable ML pipelines, parallel computing '
-      'workflows, and performance-optimized GPU systems. Also proficient in '
-      'building production-grade Flutter applications integrated with AI '
-      'services.';
+  static const summary = 'B.Sc. in IoT & Robotics. Specialized in HPC and '
+      'GPU-accelerated ML using CUDA, cuML, and cuDF. Experienced in scalable '
+      'ML pipelines, parallel computing, and performance-optimized GPU systems. '
+      'Research focuses on quantum-inspired and classical ML for IoT and network '
+      'security. Also builds production-grade Flutter applications with AI '
+      'services. Targeting opportunities in HPC, GPU computing, and AI-driven systems.';
 
   static const interests = [
     'High-Performance Computing',
     'GPU-Accelerated Machine Learning',
     'Parallel Algorithms',
-    'LLM Steering & Fine Tuning',
+    'LLM steering & Fine Tuning',
     'Assistive & Human-Centered AI',
     'AI-Enabled Mobile Systems',
   ];
 
   static const education = [
-    Education('2023 – 2026', 'B.Sc. in IoT & Robotics Engineering',
-        'University of Frontier Technology, Bangladesh', 'CGPA (7th Sem): 3.84 / 4.00'),
-    Education('2021', 'Higher Secondary School Certificate', '', 'GPA: 5.0/5.0'),
-    Education('2018', 'Secondary School Certificate', '', 'GPA: 5.0/5.0'),
+    Education('2023 - 2026', 'B.Sc. in IoT & Robotics Engineering',
+        'University of Frontier Technology, Bangladesh', 'CGPA: 3.87 / 4.00'),
+    Education('2021', 'Higher Secondary School Certificate (HSC)', '', 'GPA: 5.0/5.0'),
+    Education('2018', 'Secondary School Certificate (SSC)', '', 'GPA: 5.0/5.0'),
   ];
 
   static const publications = [
     Publication(
       'Jan 2026',
       'Transformer-Based Models for Student Mental Health Detection: A Comparative Study of BERT, RoBERTa and Gemma',
-      'IEEE ICECTE 2026, Rajshahi, Bangladesh'),
+      '2026 IEEE International Conference on Electrical, Computer & Telecommunication Engineering (ICECTE 2026), Rajshahi, Bangladesh'),
     Publication(
       'Apr 2026',
       'AgriMind: An IoT-Driven LLM Framework for Intelligent Precision Agriculture',
-      'IEEE QPAIN 2026, Chittagong, Bangladesh'),
+      '2026 IEEE 2nd International Conference on Quantum Photonics, Artificial Intelligence, and Networking (QPAIN), Chittagong, Bangladesh'),
     Publication(
       'Jun 2026',
       'IoT-Based Smart Homes: Technologies, Security Risks and Countermeasures',
@@ -52,57 +52,119 @@ class ResumeData {
 
   static const skills = [
     SkillCategory('HPC & GPU Computing', [
-      'CUDA C/C++', 'NVIDIA RAPIDS', 'cuML', 'cuDF', 'Nsight Compute',
+      'CUDA (C/C++)',
+      'NVIDIA RAPIDS (cuML, cuDF)',
+      'GPU-accelerated pipelines',
+      'Parallel computing',
+      'Performance optimization',
+      'Nsight Compute',
+      'nvidia-smi',
     ]),
     SkillCategory('AI & Machine Learning', [
-      'Deep Learning', 'LoRA', 'LLM Fine Tuning', 'Computer Vision', 'RoBERTa',
+      'Deep Learning',
+      'LoRA',
+      'LLM fine tuning',
+      'Computer Vision',
+      'Generative AI (Gemini / Nano Banana)',
+      'RoBERTa',
+      'GPU workflows',
     ]),
-    SkillCategory('Mobile Development', ['Flutter', 'Firebase', 'TFLite']),
-    SkillCategory('Languages', ['Python', 'CUDA C/C++', 'Dart', 'C', 'C++', 'Rust']),
-    SkillCategory('Backend & IoT', ['FastAPI', 'Flask', 'Arduino', 'ESP32', 'Raspberry Pi']),
-    SkillCategory('Tools & Platforms', ['Git', 'Docker', 'Linux', 'Azure', 'Altium']),
+    SkillCategory('Mobile Development', [
+      'Flutter (Android, Web)',
+      'Firebase (Auth, Firestore, FCM)',
+      'Google Sign-In',
+      'TTS integration',
+      'TFLite',
+    ]),
+    SkillCategory('Backend Development', [
+      'Python (FastAPI, Flask)',
+    ]),
+    SkillCategory('Languages', [
+      'Python',
+      'CUDA C/C++',
+      'Dart',
+      'C',
+      'Java',
+      'C++',
+      'Bash',
+      'Rust',
+    ]),
+    SkillCategory('IoT Platform', [
+      'Arduino',
+      'Raspberry Pi',
+      'ESP8266',
+      'ESP32',
+    ]),
+    SkillCategory('PCB Design', [
+      'Altium Designer',
+    ]),
+    SkillCategory('Operating System', [
+      'Windows',
+      'Linux',
+    ]),
+    SkillCategory('Typesetting', [
+      'LaTeX',
+    ]),
+    SkillCategory('Database', [
+      'MySQL',
+      'MongoDB',
+    ]),
+    SkillCategory('Tools & Platforms', [
+      'Burp Suite',
+      'Git',
+      'GitHub',
+      'Google Drive API',
+      'Jitsi Meet SDK',
+      'Azure Cloud',
+    ]),
+  ];
+
+  static const languages = [
+    'English (Professional Working Proficiency)',
+    'Bangla (Native)',
+  ];
+
+  static const extracurriculars = [
+    'Scout Member (Senior Patrol Leader) — Leadership training, team coordination, and community service initiatives.',
+    'Photography — Event, nature and creative photography. Executive committee member of the school photography club.',
   ];
 
   static final projects = [
     Project(
       title: 'GPU-Accelerated ML Pipeline',
-      tech: 'CUDA | cuML | cuDF',
+      tech: 'HPC | CUDA | cuML | cuDF',
       points: [
-        'GPU-accelerated ML pipelines using NVIDIA RAPIDS ecosystem',
-        'cuDF for large-scale GPU data preprocessing',
-        'Multi-fold training speedups vs CPU-based workflows',
+        'Built GPU-accelerated ML pipelines using NVIDIA RAPIDS (cuDF for preprocessing, cuML for training), achieving multi-fold speedups over CPU workflows.',
       ],
     ),
     Project(
-      title: 'Smart Navigation Assistant',
-      tech: 'AI | Flutter | CV',
+      title: 'Quantum ML for Network Security',
+      tech: 'Quantum ML | Network Security | Python',
       points: [
-        'AI-powered Flutter app for real-time assistive navigation with LLM',
-        'Object detection, distance estimation, and TTS-based guidance',
+        'Evaluated parameterized quantum kernels for one-class intrusion detection on CICIoT2023 and UNSW-NB15 under an equalized protocol; implemented a PSO-tuned RFF surrogate validated against the exact fidelity kernel.',
+        'Found no detection advantage over classical RBF one-class SVM, with explicit surrogate-to-exact kernel fidelity analysis.',
       ],
     ),
     Project(
-      title: 'Mental Health Detection',
-      tech: 'NLP | RoBERTa | Gemma',
+      title: 'Quantum-Inspired Decentralized IoT Anomaly Detection',
+      tech: 'IoT Security | Anomaly Detection | Swarm Collaboration',
       points: [
-        'Transformer model for mental health text classification',
-        'CLI-based inference for streamlined testing evaluation',
+        'Designed a decentralized anomaly-detection framework combining a benign-reference fidelity-density detector with swarm-inspired peer corroboration.',
+        'Evaluated on CICIoT2023 and X-IIoTID (ROC-AUC 0.9706, 0.8758) and validated peer verification in a 50-node NS-3 simulation (3-of-3 delivery, 10.8424 ms latency).',
       ],
     ),
     Project(
-      title: 'Video Conferencing App',
-      tech: 'Flutter | Firebase | Jitsi',
+      title: 'Smart Navigation Assistant for Visually Impaired',
+      tech: 'AI | Flutter',
       points: [
-        'Real-time video conferencing with Jitsi Meet SDK',
-        'Firebase auth, real-time chat, and meeting management',
+        'Developed an AI-powered Flutter app for real-time assistive navigation using an LLM, with computer vision for object detection, distance estimation, and TTS-based guidance.',
       ],
     ),
     Project(
-      title: 'Smart Door Lock System',
-      tech: 'IoT | ESP32',
+      title: 'Student Mental Health Detection System',
+      tech: 'ML | NLP',
       points: [
-        'Cloud-connected security system with ESP32 microcontroller',
-        'Remote monitoring and secure access control via IoT',
+        'Implemented a RoBERTa & Gemma based Transformer for mental health sentiment analysis and a CLI-based inference tool for evaluation.',
       ],
     ),
   ];
@@ -117,11 +179,8 @@ class ResumeData {
     Certification('PCB Design: From Idea to Product', 'https://ude.my/UC-9df4d3f1-2eeb-4245-a158-8884d6ff4f73', 'https://udemy-certificate.s3.amazonaws.com/image/UC-9df4d3f1-2eeb-4245-a158-8884d6ff4f73.jpg'),
     Certification('Go - The Complete Guide', 'https://ude.my/UC-560066ed-eb42-4323-b4c6-0dc4f42e23f3', 'https://udemy-certificate.s3.amazonaws.com/image/UC-560066ed-eb42-4323-b4c6-0dc4f42e23f3.jpg'),
     Certification('Flutter BLoC - Zero to Hero', 'https://ude.my/UC-d6cc5e44-2608-4cc7-9596-81d6c3d91305', 'https://udemy-certificate.s3.amazonaws.com/image/UC-d6cc5e44-2608-4cc7-9596-81d6c3d91305.jpg'),
-    Certification('Learning Complete PCB Design: From an Idea to a Product', 'https://ude.my/UC-9df4d3f1-2eeb-4245-a158-8884d6ff4f73', 'https://udemy-certificate.s3.amazonaws.com/image/UC-9df4d3f1-2eeb-4245-a158-8884d6ff4f73.jpg'),
-    Certification('DevOps, CI/CD(Continuous Integration/DeIivery) for Beginners', 'https://ude.my/UC-5a2f1bbf-d4d8-4b75-a1d2-6b4d79ba800e', 'https://udemy-certificate.s3.amazonaws.com/image/UC-5a2f1bbf-d4d8-4b75-a1d2-6b4d79ba800e.jpg'),
+    Certification('DevOps, CI/CD (Continuous Integration/Delivery) for Beginners', 'https://ude.my/UC-5a2f1bbf-d4d8-4b75-a1d2-6b4d79ba800e', 'https://udemy-certificate.s3.amazonaws.com/image/UC-5a2f1bbf-d4d8-4b75-a1d2-6b4d79ba800e.jpg'),
     Certification('How to Set Up an Electronics Lab: Tools & Equipments', 'https://ude.my/UC-0f1e3b5a-f474-48b2-8d9c-35c0511820dd', 'https://udemy-certificate.s3.amazonaws.com/image/UC-0f1e3b5a-f474-48b2-8d9c-35c0511820dd.jpg'),
-    Certification('AI Fluency: Framework & Foundations', 'https://verify.skilljar.com/c/m3t6rum2y2px', 'https://i.imgur.com/PdDnZZ1.jpeg'),
-    Certification('Claude 101', 'https://verify.skilljar.com/c/wfmycoovhkd6', 'https://i.imgur.com/TcxFrKG.jpeg'),
   ];
 
   static const badges = [
@@ -141,22 +200,22 @@ class ResumeData {
       company: 'University of Frontier Technology',
       role: 'Undergraduate Research Assistant',
       period: 'Jan 2025 – Present',
-      description: 'Research on NLP and GPU-accelerated ML for mental health detection.',
+      description: 'Research on quantum-inspired and classical ML for IoT and network security, plus GPU-accelerated ML.',
       highlights: [
-        'Developed transformer-based models for mental health text classification',
-        'Optimized training pipelines using CUDA and NVIDIA RAPIDS',
-        'Published 2 IEEE papers on AI-driven healthcare solutions',
+        'Transformer-based models for student mental health detection (IEEE ICECTE 2026)',
+        'Quantum ML evaluation for intrusion detection on CICIoT2023 and UNSW-NB15',
+        'Decentralized IoT anomaly detection validated in 50-node NS-3 simulation',
       ],
     ),
     Experience(
       company: 'Independent Projects',
       role: 'HPC & AI Engineer (Freelance)',
       period: '2024 – Present',
-      description: 'Building GPU-accelerated ML solutions and production-grade Flutter apps.',
+      description: 'Building GPU-accelerated ML systems and production-grade Flutter apps with AI services.',
       highlights: [
-        'Designed end-to-end ML pipelines with cuML and cuDF',
-        'Built AI-powered Flutter applications integrating LLM APIs',
-        'Developed IoT systems with cloud connectivity and real-time monitoring',
+        'GPU-accelerated ML pipelines with RAPIDS (cuML, cuDF)',
+        'AI-powered Flutter applications integrating LLM APIs and TTS',
+        'IoT systems with ESP32 / Arduino and cloud connectivity',
       ],
     ),
   ];

@@ -13,30 +13,36 @@ class SkillsSection extends StatelessWidget {
   const SkillsSection({super.key});
 
   List<List<int>> _spans(int cols) {
-    switch (cols) {
-      case 3:
-        return const [
-          [2, 1],
-          [1, 1, 1],
-          [3],
-        ];
-      case 2:
-        return const [
-          [2],
-          [1, 1],
-          [1, 1],
-          [2],
-        ];
-      default:
-        return const [
-          [1],
-          [1],
-          [1],
-          [1],
-          [1],
-          [1],
-        ];
+    final count = ResumeData.skills.length;
+    List<List<int>> chunk(int c) {
+      final rows = <List<int>>[];
+      var remaining = count;
+      // First row highlight: [2,1] when possible on 3-col
+      if (c == 3 && remaining >= 2) {
+        rows.add(const [2, 1]);
+        remaining -= 2;
+      } else if (c == 2 && remaining >= 1) {
+        rows.add(const [2]);
+        remaining -= 1;
+      }
+      while (remaining > 0) {
+        if (remaining >= c) {
+          rows.add(List.filled(c, 1));
+          remaining -= c;
+        } else if (remaining == 1 && c == 3) {
+          rows.add(const [3]);
+          remaining -= 1;
+        } else if (remaining == 1 && c == 2) {
+          rows.add(const [2]);
+          remaining -= 1;
+        } else {
+          rows.add(List.filled(remaining, 1));
+          remaining = 0;
+        }
+      }
+      return rows;
     }
+    return chunk(cols);
   }
 
   @override
@@ -155,10 +161,13 @@ IconData _categoryIcon(String category) {
     return Icons.psychology;
   }
   if (c.contains('mobile')) return Icons.phone_android;
+  if (c.contains('backend')) return Icons.dns;
   if (c.contains('language')) return Icons.code;
-  if (c.contains('backend') || c.contains('iot')) {
-    return Icons.memory_outlined;
-  }
+  if (c.contains('iot')) return Icons.sensors;
+  if (c.contains('pcb')) return Icons.developer_board;
+  if (c.contains('operating') || c.contains('system') && c.contains('oper')) return Icons.computer;
+  if (c.contains('typeset') || c.contains('latex')) return Icons.text_fields;
+  if (c.contains('database')) return Icons.storage;
   if (c.contains('tool') || c.contains('platform')) return Icons.build;
   return Icons.widgets;
 }

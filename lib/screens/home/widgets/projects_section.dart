@@ -49,7 +49,7 @@ class ProjectsSection extends StatelessWidget {
           AnimatedSection(
             child: const SectionHeader(
               title: 'Projects',
-              subtitle: 'Selected work across HPC, AI, mobile, and IoT',
+              subtitle: 'Selected work across HPC, quantum ML, AI, mobile, and IoT',
               index: '04',
             ),
           ),
