@@ -16,9 +16,9 @@ This version is:
 - **Performance**: no framework, 2 tiny files (`styles.css` ~8KB, `script.js` ~2KB), `loading="lazy"` images, system fonts, `prefers-reduced-motion` support
 - **Accessibility**: skip link, aria labels, focus styles, keyboard nav — all ranking signals
 
-## Contents (mirrors Flutter app 1:1)
+## Contents (mirrors Flutter app 1:1 + CV)
 
-About, Skills (6 categories), Publications (3), Projects (5, each opens a details popup), Achievements (4), Certifications (14) + Badges (2), Contact. Same text as `lib/data/resume_data.dart`.
+About (Professional Summary + Languages), Skills (11 categories per CV), Publications (3, full IEEE venues), Projects (5 per CV: GPU pipeline, 2× quantum/security, assistive nav, mental health), Achievements (4) + Languages + Extra-Curricular (Scout, Photography), Certifications (11) + Badges (2), Contact. Same text as `lib/data/resume_data.dart`.
 
 ## Deploy to GitHub Pages (2 options)
 
