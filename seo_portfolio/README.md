@@ -1,46 +1,55 @@
 # SEO Portfolio — Sidratul Punno
 
-Static, SEO-friendly + AI-crawler-friendly rebuild of the Flutter portfolio, ready for **GitHub Pages**.
+Static, SEO-friendly and AI-crawler-friendly portfolio for **Sheikh Sidratul Muntaha Punno**, ready for **GitHub Pages**.
 
 Folder: `seo_portfolio/`
 
-## Why this version ranks better than Flutter web
+## Why this ranks better than Flutter web
 
-Flutter web renders to `<canvas>` — Google / Bing / AI crawlers (GPTBot, ClaudeBot, PerplexityBot) see almost no text.
-This version is:
+Flutter web renders to `<canvas>` — Google, Bing, and AI crawlers (GPTBot, ClaudeBot, PerplexityBot) see almost no text. This version is:
 
 - **Semantic HTML5**: one `<h1>`, proper `<h2>/<h3>` hierarchy, `<header>/<main>/<section>/<article>/<footer>`, `<time datetime>`, `<address>`
 - **Full meta**: title, description, keywords, canonical, Open Graph, Twitter cards, `theme-color`, `robots`
-- **JSON-LD structured data**: `Person` + `WebSite` + 3× `ScholarlyArticle` + `ItemList` projects + `FAQPage` (rich results + AI answers)
+- **JSON-LD structured data**: `Person` (with all credentials and awards), `WebSite`, 3× `ScholarlyArticle`, `ItemList` projects, `FAQPage`
 - **Crawler files**: `robots.txt` (allows GPTBot/ClaudeBot/PerplexityBot), `sitemap.xml`, `llms.txt`, `humans.txt`, `manifest.webmanifest`, `404.html`, `.nojekyll`
-- **Performance**: no framework, 2 tiny files (`styles.css` ~8KB, `script.js` ~2KB), `loading="lazy"` images, system fonts, `prefers-reduced-motion` support
-- **Accessibility**: skip link, aria labels, focus styles, keyboard nav — all ranking signals
+- **Performance**: no framework, two small files (`styles.css`, `script.js`), lazy-loaded certificate images, system-font fallbacks, `prefers-reduced-motion`
+- **Accessibility**: skip link, aria labels, focus styles, keyboard navigation, mobile menu, reduced-motion support
 
-## Contents (mirrors Flutter app 1:1 + CV)
+## Contents (mirrors current CV)
 
-About (Professional Summary + Languages), Skills (11 categories per CV), Publications (3, full IEEE venues), Projects (5 per CV: GPU pipeline, 2× quantum/security, assistive nav, mental health), Achievements (4) + Languages + Extra-Curricular (Scout, Photography), Certifications (14) + Badges (2), Contact. Same text as `lib/data/resume_data.dart`.
+- **About**: current professional summary, open-to roles, research interests, education
+- **Skills**: 11 categories from the CV (languages, AI/ML, mobile, backend, embedded systems & IoT, accelerated computing, PCB, OS, typesetting, databases, tools)
+- **Publications**: 3 papers with full IEEE venues
+- **Projects**: 5 projects (GPU pipeline, quantum/security ×2, assistive navigation, mental health)
+- **Achievements**: 4 honors, languages, and 2 extra-curricular activities
+- **Certifications**: all 14 certificates retained, including AI Fluency and Claude 101, plus 2 MongoDB/Credly badges
+- **Contact**: GitHub, LinkedIn, email, phone, resume
 
-## Deploy to GitHub Pages (2 options)
+> Note: the CV lists two PCB-design credentials that share the same verification link. Both are kept on the site so nothing is removed.
+
+## Deploy to GitHub Pages
 
 ### Option A — separate repo (recommended)
-1. Create new repo, e.g. `sidratulpunno.github.io` (user site) or `portfolio-seo`.
-2. Copy **contents** of `seo_portfolio/` to repo root (not the folder itself).
+1. Create a new repo, e.g. `sidratulpunno.github.io` or `portfolio-seo`.
+2. Copy the **contents** of `seo_portfolio/` to the repo root.
 3. Push to `main`.
-4. Repo → Settings → Pages → Deploy from branch → `main` / `/ (root)` → Save.
+4. Repo → Settings → Pages → Deploy from branch → `main` / `/(root)` → Save.
 5. URL: `https://<username>.github.io/` or `https://<username>.github.io/portfolio-seo/`.
 
 ### Option B — same repo, `/seo` subpath
-1. Copy `seo_portfolio/` into your existing repo.
-2. Pages → deploy `main` root; site lives at `.../seo_portfolio/`.
+1. Copy `seo_portfolio/` into the existing repo.
+2. Deploy Pages from `main`; the site lives at `.../seo_portfolio/`.
 
-## Before going live — 3 replacements
+## Before going live
 
-1. Replace `https://sidratulpunno.github.io/` in:
-   - `index.html` (canonical, og:url, og:image, JSON-LD `@id`/`url`)
+1. If the final URL is not `https://sidratulpunno.github.io/portfolio/`, update it in:
+   - `index.html` (canonical, `og:url`, `og:image`, Twitter image, JSON-LD `@id` / `url`)
    - `sitemap.xml` (`<loc>` entries)
    - `robots.txt` (`Sitemap:` line)
-2. OG image: `assets/og-cover.svg` is included. For best LinkedIn/X previews export a 1200×630 PNG as `assets/og-cover.png` (SVG works on most, PNG works everywhere) — or point `og:image` to the `.svg`.
-3. Optional: add Google Search Console + Bing Webmaster verification `<meta>` tags in `<head>`.
+   - `llms.txt` (URL header)
+2. Optional: add Google Search Console and Bing Webmaster verification `<meta>` tags in `<head>`.
+
+The Open Graph image is included as `assets/og-cover.png` (1200×630), with `assets/og-cover.svg` as the editable source.
 
 ## Local preview
 
@@ -52,7 +61,7 @@ python -m http.server 8000
 
 ## Validate SEO
 
-- Rich Results Test: https://search.google.com/test/rich-results → paste URL
+- Rich Results Test: https://search.google.com/test/rich-results
 - Schema validator: https://validator.schema.org/
 - PageSpeed: https://pagespeed.web.dev/
-- `llms.txt` check: open `/llms.txt`, `/robots.txt`, `/sitemap.xml` after deploy.
+- Check `/llms.txt`, `/robots.txt`, `/sitemap.xml` after deploy.

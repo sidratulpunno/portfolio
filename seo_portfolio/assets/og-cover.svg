@@ -1,9 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" role="img" aria-label="Sheikh Sidratul Muntaha Punno — HPC and AI Engineer">
-  <rect width="1200" height="630" fill="#0E1510"/>
-  <circle cx="200" cy="180" r="180" fill="#1B5E20" opacity="0.35"/>
-  <circle cx="1020" cy="480" r="200" fill="#66BB6A" opacity="0.25"/>
-  <text x="80" y="270" font-family="system-ui, Arial, sans-serif" font-size="72" font-weight="800" fill="#FFFFFF">Sheikh Sidratul</text>
-  <text x="80" y="350" font-family="system-ui, Arial, sans-serif" font-size="72" font-weight="800" fill="#FFFFFF">Muntaha Punno</text>
-  <text x="80" y="410" font-family="system-ui, Arial, sans-serif" font-size="30" letter-spacing="4" fill="#A5D6A7">HPC &amp; AI ENGINEER — CUDA • RAPIDS • FLUTTER</text>
-  <text x="80" y="460" font-family="system-ui, Arial, sans-serif" font-size="24" fill="#E8F5E9">3 Publications • 5 Projects • IEEE Research</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Sheikh Sidratul Muntaha Punno — IoT, Embedded Systems and AI Engineer">
+  <rect width="1200" height="630" fill="#fefaf3"/>
+  <rect width="1200" height="6" fill="#84a282"/>
+
+  <circle cx="1010" cy="312" r="176" fill="none" stroke="#b8cfb3" stroke-width="1.5"/>
+  <circle cx="1010" cy="312" r="129" fill="none" stroke="#84a282" stroke-width="1.5"/>
+  <circle cx="1010" cy="312" r="124" fill="#b8cfb3" fill-opacity="0.28" stroke="#84a282" stroke-width="2"/>
+  <text x="1010" y="350" text-anchor="middle" font-family="system-ui, Arial, sans-serif" font-size="96" font-weight="800" fill="#4e664c" letter-spacing="4">SP</text>
+
+  <text x="80" y="128" font-family="ui-monospace, Consolas, monospace" font-size="20" letter-spacing="5" fill="#4e664c">PORTFOLIO · 2026</text>
+
+  <text x="80" y="242" font-family="system-ui, Arial, sans-serif" font-size="74" font-weight="800" fill="#1e231d" letter-spacing="-2">Sheikh Sidratul</text>
+  <text x="80" y="322" font-family="system-ui, Arial, sans-serif" font-size="74" font-weight="800" fill="#1e231d" letter-spacing="-2">Muntaha Punno</text>
+
+  <rect x="80" y="362" width="72" height="4" fill="#84a282"/>
+
+  <text x="80" y="420" font-family="system-ui, Arial, sans-serif" font-size="30" font-weight="600" fill="#5d6659">IoT · Embedded Systems · Applied AI</text>
+  <text x="80" y="462" font-family="ui-monospace, Consolas, monospace" font-size="19" letter-spacing="1" fill="#666e61">EMBEDDED LINUX · YOCTO · ESP32 · FLUTTER · CUDA · RAPIDS</text>
+
+  <text x="80" y="536" font-family="system-ui, Arial, sans-serif" font-size="22" fill="#5d6659">3 IEEE publications · 5 projects · 14 certifications · 2 badges</text>
+
+  <rect x="80" y="566" width="196" height="1" fill="#b8cfb3"/>
+  <text x="80" y="600" font-family="ui-monospace, Consolas, monospace" font-size="18" letter-spacing="1" fill="#666e61">sidratulpunno.github.io/portfolio</text>
 </svg>

@@ -2,22 +2,22 @@
 # URL: https://sidratulpunno.github.io/portfolio/
 # Contact: sheikhpunno400@gmail.com | GitHub: @sidratulpunno | LinkedIn: sidratul-punno-51a0832b6
 
-> B.Sc. IoT & Robotics Engineering, University of Frontier Technology Bangladesh (2023-2026, CGPA 3.87/4.00).
-> Specialized in HPC and GPU-accelerated ML (CUDA, cuML, cuDF). Research: quantum-inspired and classical ML for IoT and network security. Also Flutter AI apps.
+> B.Sc. in IoT & Robotics Engineering, University of Frontier Technology Bangladesh (2023-2026, CGPA 3.87/4.00).
+> Practical experience in embedded systems, IoT platforms, AI/ML, and mobile application development. Skilled in Python, C/C++, Flutter, and Linux-based development, with exposure to GPU-accelerated computing and embedded Linux build systems. Research focuses on machine learning for IoT security, assistive AI, and applied AI systems.
 
 ## Professional Summary
-B.Sc. in IoT & Robotics. Specialized in HPC and GPU-accelerated ML using CUDA, cuML, and cuDF. Experienced in scalable ML pipelines, parallel computing, and performance-optimized GPU systems. Research focuses on quantum-inspired and classical ML for IoT and network security. Also builds production-grade Flutter applications with AI services. Targeting opportunities in HPC, GPU computing, and AI-driven systems.
+B.Sc. in IoT & Robotics Engineering with practical experience in embedded systems, IoT platforms, AI/ML, and mobile application development. Skilled in Python, C/C++, Flutter, and Linux-based development, with exposure to GPU-accelerated computing and embedded Linux build systems. Research focuses on machine learning for IoT security, assistive AI, and applied AI systems. Open to opportunities in software engineering, embedded systems, IoT, and AI-driven applications.
 
-## Research interests
-- High-Performance Computing
-- GPU-Accelerated Machine Learning
-- Parallel Algorithms
-- LLM steering & Fine Tuning
+## Research Interests
+- IoT Systems & Security
+- Edge & Embedded AI
+- Applied Machine Learning
+- LLM Applications & Fine-Tuning
 - Assistive & Human-Centered AI
 - AI-Enabled Mobile Systems
 
 ## Education
-- 2023-2026: B.Sc. IoT & Robotics Engineering, University of Frontier Technology Bangladesh — CGPA 3.87/4.00
+- 2023-2026: B.Sc. in IoT & Robotics Engineering, University of Frontier Technology Bangladesh — CGPA 3.87/4.00
 - 2021: Higher Secondary School Certificate (HSC) — GPA 5.0/5.0
 - 2018: Secondary School Certificate (SSC) — GPA 5.0/5.0
 
@@ -27,40 +27,60 @@ B.Sc. in IoT & Robotics. Specialized in HPC and GPU-accelerated ML using CUDA, c
 3. Jun 2026 — "IoT-Based Smart Homes: Technologies, Security Risks and Countermeasures" — International Journal of Information Engineering and Electronic Business (IJIEEB) Vol. 18, No. 3
 
 ## Technical Skills
-- HPC & GPU Computing: CUDA (C/C++), NVIDIA RAPIDS (cuML, cuDF), GPU-accelerated pipelines, parallel computing, performance optimization, Nsight Compute, nvidia-smi
-- AI & Machine Learning: Deep Learning, LoRA, LLM fine tuning, Computer Vision, Generative AI (Gemini / Nano Banana), RoBERTa, GPU workflows
-- Mobile Development: Flutter (Android, Web), Firebase (Auth, Firestore, FCM), Google Sign-In, TTS integration, TFLite
+- Programming Languages: Python, C, C++, CUDA C/C++, Dart, Java, Bash, Rust
+- AI & Machine Learning: Deep Learning, LoRA, LLM fine-tuning, Computer Vision, Generative AI (Gemini / Nano Banana), RoBERTa, model deployment on GPU and edge devices
+- Mobile Development: Flutter (Android, Web), Firebase (Auth, Firestore, FCM), Google Sign-In, Text-to-Speech (TTS) integration, TFLite
 - Backend Development: Python (FastAPI, Flask)
-- Languages: Python, CUDA C/C++, Dart, C, Java, C++, Bash, Rust
-- IoT Platform: Arduino, Raspberry Pi, ESP8266, ESP32
+- Embedded Systems & IoT: Arduino, Raspberry Pi, ESP8266, ESP32, sensor integration, embedded Linux boards, Linux kernel build/configuration, Yocto Project
+- Accelerated Computing: CUDA, NVIDIA RAPIDS (cuML, cuDF), GPU-accelerated data/ML pipelines, performance profiling with NVIDIA Nsight Compute
 - PCB Design: Altium Designer
-- Operating System: Windows, Linux
+- Operating Systems: Windows, Linux
 - Typesetting: LaTeX
-- Database: MySQL, MongoDB
+- Databases: MySQL, MongoDB
 - Tools & Platforms: Burp Suite, Git, GitHub, Google Drive API, Jitsi Meet SDK, Azure Cloud
 
 ## Projects
-1. GPU-Accelerated ML Pipeline (HPC|CUDA|cuML|cuDF): RAPIDS pipelines (cuDF preprocessing, cuML training), multi-fold speedups over CPU
-2. Quantum ML for Network Security (Quantum ML|Network Security|Python): quantum kernels for one-class intrusion detection on CICIoT2023/UNSW-NB15; PSO-tuned RFF surrogate vs exact fidelity kernel; no advantage over RBF SVM
-3. Quantum-Inspired Decentralized IoT Anomaly Detection (IoT Security|Anomaly Detection|Swarm): fidelity-density detector + swarm peer corroboration; ROC-AUC 0.9706/0.8758; 50-node NS-3 (3-of-3 delivery, 10.8424 ms latency)
-4. Smart Navigation Assistant for Visually Impaired (AI|Flutter): real-time assistive navigation with LLM, CV object detection, distance estimation, TTS guidance
-5. Student Mental Health Detection System (ML|NLP): RoBERTa & Gemma transformer for sentiment analysis + CLI inference tool
+1. GPU-Accelerated ML Pipeline (Accelerated Computing | CUDA | cuML | cuDF): Built GPU-accelerated ML pipelines using NVIDIA RAPIDS (cuDF preprocessing, cuML training), achieving multi-fold speedups over CPU workflows.
+2. Quantum ML for Network Security (Quantum ML | Network Security | Python): Evaluated parameterized quantum kernels for one-class intrusion detection on CICIoT2023 and UNSW-NB15 under an equalized protocol; implemented a PSO-tuned RFF surrogate validated against the exact fidelity kernel. Found no detection advantage over classical RBF one-class SVM, with explicit surrogate-to-exact kernel fidelity analysis.
+3. Quantum-Inspired Decentralized IoT Anomaly Detection (IoT Security | Anomaly Detection | Swarm Collaboration): Designed a decentralized framework combining a benign-reference fidelity-density detector with swarm-inspired peer corroboration. Evaluated on CICIoT2023 and X-IIoTID (ROC-AUC 0.9706, 0.8758) and validated peer verification in a 50-node NS-3 simulation (3-of-3 delivery, 10.8424 ms latency).
+4. Smart Navigation Assistant for Visually Impaired (AI | Flutter): Developed an AI-powered Flutter app for real-time assistive navigation using an LLM, with computer vision for object detection, distance estimation, and TTS-based guidance.
+5. Student Mental Health Detection System (ML | NLP): Implemented a RoBERTa and Gemma based Transformer for mental health sentiment analysis and a CLI-based inference tool for evaluation.
 
 ## Languages
 - English (Professional Working Proficiency), Bangla (Native)
 
+## Certifications & Professional Badges
+Technical certifications:
+1. Learn C++ Programming Beginner to Advance Deep Dive in C++ (Udemy)
+2. Machine Learning A-Z (Udemy)
+3. Learn Ethical Hacking From Scratch (Udemy)
+4. Flutter & Dart - The Complete Guide (Udemy)
+5. DevOps Beginners to Advanced with Projects (Udemy)
+6. Learn JAVA Programming Beginner to Master (Udemy)
+7. PCB Design: From Idea to Product (Udemy)
+8. Go - The Complete Guide (Udemy)
+9. Flutter BLoC - Zero to Hero (Udemy)
+10. Learning Complete PCB Design: From an Idea to a Product (Udemy)
+11. DevOps, CI/CD (Continuous Integration/Delivery) for Beginners (Udemy)
+12. How to Set Up an Electronics Lab: Tools & Equipments (Udemy)
+13. AI Fluency: Framework & Foundations (Anthropic / SkillJar)
+14. Claude 101 (Anthropic / SkillJar)
+
+Professional badges:
+1. Building AI-Powered Search with MongoDB Vector Search (Credly)
+2. Building RAG Apps Using MongoDB (Credly)
+
+All credentials are verifiable from the portfolio's Certifications section.
+
 ## Achievements
 - 2023-2025: Dean's Award, 3 consecutive years
-- 2017: President's Scout Award (President of Bangladesh)
-- 2018: Community Development Award (Ministry level)
+- 2017: President's Scout Award (Honorable President of Bangladesh)
+- 2018: Community Development Award (Ministry Level)
 - 2012: Junior Scholarship
 
 ## Extra-Curricular
-- Scout Member (Senior Patrol Leader): leadership, team coordination, community service
-- Photography: event/nature/creative; executive committee, school photography club
-
-## Certifications (verifiable)
-C++, ML A-Z, Ethical Hacking, Flutter & Dart Complete Guide, DevOps with Projects, Java, PCB Design, Go Complete Guide, Flutter BLoC, DevOps CI/CD, Electronics Lab Setup, AI Fluency, Claude 101 (Udemy/SkillJar). Badges: MongoDB Vector Search, RAG Apps (Credly).
+- Scout Member (Senior Patrol Leader): leadership training, team coordination, community service
+- Photography: event, nature and creative photography; executive committee member of the school photography club
 
 ## Links
 - Resume: https://drive.google.com/file/d/1nR40C2p7q3Zfxd9ihVOl7iD_vItlwAI3/view
