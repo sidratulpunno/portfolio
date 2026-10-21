@@ -1,4 +1,4 @@
-// Light-by-default theme, mobile menu, scroll spy, reveal, back-to-top.
+// Light-by-default theme, mobile menu, scroll spy, back-to-top.
 (function () {
   var root = document.documentElement;
   var KEY = 'sp-theme';
@@ -80,20 +80,6 @@
     document.querySelectorAll('main section[id]').forEach(function (s) { io2.observe(s); });
   }
 
-  // Reveal on scroll
-  var els = document.querySelectorAll('.card, .hero-inner > *, .sec-head > *');
-  els.forEach(function (el) { el.classList.add('reveal'); });
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (en.isIntersecting) { en.target.classList.add('visible'); io.unobserve(en.target); }
-      });
-    }, { threshold: 0.08, rootMargin: '0px 0px -4% 0px' });
-    els.forEach(function (el) { io.observe(el); });
-  } else {
-    els.forEach(function (el) { el.classList.add('visible'); });
-  }
-
   // Footer year
   var y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
@@ -101,15 +87,15 @@
   // Project details modal — mirrors CV
   var PROJECTS = {
     'gpu-pipeline': {
-      tech: 'HPC | CUDA | cuML | cuDF',
+      tech: 'Accelerated Computing | CUDA | cuML | cuDF',
       title: 'GPU-Accelerated ML Pipeline',
-      tag: 'HPC · GPU computing',
+      tag: 'Accelerated computing · GPU',
       overview: 'GPU-accelerated ML pipelines using NVIDIA RAPIDS (cuDF for preprocessing, cuML for training), achieving multi-fold speedups over CPU workflows. Keeps data on-device to avoid CPU-GPU transfer overhead.',
       points: [
         'Built GPU-accelerated ML pipelines using NVIDIA RAPIDS (cuDF for preprocessing, cuML for training)',
         'Multi-fold speedups over CPU workflows'
       ],
-      stack: ['CUDA', 'Python', 'RAPIDS', 'cuML', 'cuDF', 'Nsight Compute', 'nvidia-smi'],
+      stack: ['CUDA', 'Python', 'RAPIDS', 'cuML', 'cuDF', 'Nsight Compute'],
       outcome: 'Outcome: reusable template for GPU-first ML work.'
     },
     'quantum-ml': {
@@ -120,7 +106,7 @@
       points: [
         'Parameterized quantum kernels for one-class intrusion detection on CICIoT2023 and UNSW-NB15',
         'PSO-tuned RFF surrogate validated against the exact fidelity kernel',
-        'No detection advantage over classical RBF one-class SVM, with explicit fidelity analysis'
+        'Found no detection advantage over classical RBF one-class SVM, with explicit surrogate-to-exact kernel fidelity analysis'
       ],
       stack: ['Python', 'Quantum kernels', 'RFF', 'PSO', 'CICIoT2023', 'UNSW-NB15'],
       outcome: 'Outcome: rigorous negative result with surrogate-to-exact kernel fidelity analysis.'
@@ -129,11 +115,11 @@
       tech: 'IoT Security | Anomaly Detection | Swarm Collaboration',
       title: 'Quantum-Inspired Decentralized IoT Anomaly Detection',
       tag: 'IoT security · Decentralized detection',
-      overview: 'Decentralized anomaly-detection framework combining a benign-reference fidelity-density detector with swarm-inspired peer corroboration. Evaluated on CICIoT2023 and X-IIoTID (ROC-AUC 0.9706, 0.8758) and validated in a 50-node NS-3 simulation (3-of-3 delivery, 10.8424 ms latency).',
+      overview: 'Designed a decentralized anomaly-detection framework combining a benign-reference fidelity-density detector with swarm-inspired peer corroboration. Evaluated on CICIoT2023 and X-IIoTID (ROC-AUC 0.9706, 0.8758) and validated peer verification in a 50-node NS-3 simulation (3-of-3 delivery, 10.8424 ms latency).',
       points: [
-        'Benign-reference fidelity-density detector with swarm-inspired peer corroboration',
+        'Designed a decentralized anomaly-detection framework combining a benign-reference fidelity-density detector with swarm-inspired peer corroboration',
         'ROC-AUC 0.9706 (CICIoT2023) and 0.8758 (X-IIoTID)',
-        '50-node NS-3 validation: 3-of-3 delivery, 10.8424 ms latency'
+        'Validated peer verification in a 50-node NS-3 simulation: 3-of-3 delivery, 10.8424 ms latency'
       ],
       stack: ['Python', 'IoT Security', 'Anomaly Detection', 'NS-3', 'CICIoT2023', 'X-IIoTID'],
       outcome: 'Outcome: decentralized detector with peer-verified validation at scale.'
@@ -214,6 +200,14 @@
   });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') { closeProject(); return; }
+    if (e.key === 'Tab' && modal && !modal.hidden) {
+      var focusables = modal.querySelectorAll('a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])');
+      if (!focusables.length) return;
+      var first = focusables[0];
+      var last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
     if ((e.key === 'Enter' || e.key === ' ') && e.target.classList && e.target.classList.contains('project')) {
       e.preventDefault();
       openProject(e.target.getAttribute('data-project'));

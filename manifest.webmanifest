@@ -1,12 +1,12 @@
 {
-  "name": "Sheikh Sidratul Muntaha Punno — HPC & AI Engineer",
+  "name": "Sheikh Sidratul Muntaha Punno — IoT, Embedded Systems & AI",
   "short_name": "Punno",
-  "description": "Portfolio of Sheikh Sidratul Muntaha Punno, HPC & AI Engineer: CUDA, GPU ML, LLM, Flutter, IoT.",
+  "description": "Portfolio of Sheikh Sidratul Muntaha Punno: embedded systems, IoT, applied AI, Flutter, Linux/Yocto, and GPU-accelerated computing.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#f5faf6",
-  "theme_color": "#1b5e20",
+  "background_color": "#fefaf3",
+  "theme_color": "#84a282",
   "icons": [
     {
       "src": "./assets/favicon.svg",
